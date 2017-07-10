@@ -13,6 +13,9 @@
 		5669066F1F138C2100A4980E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 566906661F138C2100A4980E /* Assets.xcassets */; };
 		566906701F138C2100A4980E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 566906671F138C2100A4980E /* LaunchScreen.storyboard */; };
 		566906711F138C2100A4980E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 566906691F138C2100A4980E /* Main.storyboard */; };
+		566906771F13AADE00A4980E /* FriendsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566906761F13AADE00A4980E /* FriendsData.swift */; };
+		566906791F13AB3600A4980E /* FriendsListContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566906781F13AB3600A4980E /* FriendsListContext.swift */; };
+		5669067B1F13C0FE00A4980E /* FriendsContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5669067A1F13C0FE00A4980E /* FriendsContext.swift */; };
 		8821E6698657DAA8A6D496EE /* Pods_SwiftTask.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35D32BC925E9AD1A66F3F5DF /* Pods_SwiftTask.framework */; };
 /* End PBXBuildFile section */
 
@@ -25,6 +28,9 @@
 		566906661F138C2100A4980E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		566906681F138C2100A4980E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5669066A1F138C2100A4980E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		566906761F13AADE00A4980E /* FriendsData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsData.swift; sourceTree = "<group>"; };
+		566906781F13AB3600A4980E /* FriendsListContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsListContext.swift; sourceTree = "<group>"; };
+		5669067A1F13C0FE00A4980E /* FriendsContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsContext.swift; sourceTree = "<group>"; };
 		6F0951B6731E00BA6E50E3F5 /* Pods-SwiftTask.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftTask.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftTask/Pods-SwiftTask.debug.xcconfig"; sourceTree = "<group>"; };
 		9AB022A488F5D6800696B05F /* Pods-SwiftTask.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftTask.release.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftTask/Pods-SwiftTask.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -126,6 +132,7 @@
 		566906731F13949E00A4980E /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				566906751F13AAC000A4980E /* FriendList */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -135,6 +142,16 @@
 			children = (
 			);
 			path = UI;
+			sourceTree = "<group>";
+		};
+		566906751F13AAC000A4980E /* FriendList */ = {
+			isa = PBXGroup;
+			children = (
+				566906761F13AADE00A4980E /* FriendsData.swift */,
+				566906781F13AB3600A4980E /* FriendsListContext.swift */,
+				5669067A1F13C0FE00A4980E /* FriendsContext.swift */,
+			);
+			path = FriendList;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -261,8 +278,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				566906771F13AADE00A4980E /* FriendsData.swift in Sources */,
 				5669066E1F138C2100A4980E /* ViewController.swift in Sources */,
+				5669067B1F13C0FE00A4980E /* FriendsContext.swift in Sources */,
 				5669066C1F138C2100A4980E /* AppDelegate.swift in Sources */,
+				566906791F13AB3600A4980E /* FriendsListContext.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

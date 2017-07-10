@@ -15,14 +15,9 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let loginButton = LoginButton(readPermissions: [ .publicProfile, .email, .userFriends ])
-        loginButton.center = view.center
-        
-        view.addSubview(loginButton)
-        
         // Add a custom login button to your app
         let myLoginButton = UIButton(type: .custom)
-        myLoginButton.backgroundColor = UIColor.darkGray
+        myLoginButton.backgroundColor = UIColor.gray
         myLoginButton.frame = CGRect(x: 0, y: 0, width: 180, height: 40);
         myLoginButton.center = view.center;
         myLoginButton.setTitle("My Login Button", for: .normal)
@@ -32,6 +27,11 @@ class ViewController: UIViewController {
         
         // Add the button to the view
         view.addSubview(myLoginButton)
+        
+//        if AccessToken.current != nil {
+//            let result = FriendListContext().friends(callBack: fetchProfile)
+//            print(result);
+//        }
     }
     
     // Once the button is clicked, show the login dialog
@@ -44,16 +44,27 @@ class ViewController: UIViewController {
             case .cancelled:
                 print("User cancelled login.")
             case .success(let grantedPermissions, let declinedPermissions, let accessToken):
-                print("Logged in!")
+                let result = FriendListContext().friends(callBack: self.fetchProfile)
+                print(result);
             }
         }
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    func fetchProfile(result:Any?) {
+        
+        print("fetch profile")
+        
+        let dictionary = result as! NSDictionary
+        
+        let friends = dictionary.value(forKey: "data") as! NSArray
+        var count = 1
+        if let array = friends as? [NSDictionary] {
+            for friend : NSDictionary in array {
+                let name = friend.value(forKey: "name") as! NSString
+                print("\(count) \(name)")
+                count += 1
+            }
+        }
     }
-
-
 }
 
