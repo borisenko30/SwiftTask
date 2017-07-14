@@ -10,25 +10,22 @@ import UIKit
 
 class IDPFriendsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet var tableView: UITableView?
+    var friends: IDPUsersModel?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        IDPFriendListContext().execute(object: self) { _ in
-            print("friendList received...")
-        }
     }
     
     // MARK: UITableViewDataSource
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return (self.friends?.count())!
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: IDPUserCell = tableView.reusableCell(cellClass: IDPUserCell.self) as! IDPUserCell
-        
-        cell.user = IDPUser(name:"Vasya")
+        let cell = tableView.reusableCell(cellClass: IDPUserCell.self, for: indexPath) { (result) in
+            result.user = self.friends?[indexPath.row]
+        }
         
         return cell;
     }

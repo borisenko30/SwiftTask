@@ -21,7 +21,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         self.window = window
         
-        //window.rootViewController = ViewController()
         window.rootViewController = IDPNavigationController()
         
         window.backgroundColor = UIColor.white

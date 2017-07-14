@@ -22,6 +22,10 @@
 		561010B41F17B14C006C3273 /* UINib+IDPExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561010B31F17B14C006C3273 /* UINib+IDPExtensions.swift */; };
 		561010B61F17B234006C3273 /* Array+IDPExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561010B51F17B234006C3273 /* Array+IDPExtensions.swift */; };
 		5642CE141F18A287002D9F5C /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5642CE131F18A287002D9F5C /* UITableView+Extensions.swift */; };
+		5642CE171F18BEFB002D9F5C /* IDPModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5642CE161F18BEFB002D9F5C /* IDPModel.swift */; };
+		5642CE1A1F18C089002D9F5C /* IDPArrayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5642CE191F18C089002D9F5C /* IDPArrayModel.swift */; };
+		5642CE1C1F18D521002D9F5C /* Optional+IDPExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5642CE1B1F18D521002D9F5C /* Optional+IDPExtensions.swift */; };
+		5642CE1F1F18F20E002D9F5C /* IDPUsersModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5642CE1E1F18F20E002D9F5C /* IDPUsersModel.swift */; };
 		5669066C1F138C2100A4980E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566906621F138C2100A4980E /* AppDelegate.swift */; };
 		5669066D1F138C2100A4980E /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 566906631F138C2100A4980E /* Info.plist */; };
 		5669066F1F138C2100A4980E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 566906661F138C2100A4980E /* Assets.xcassets */; };
@@ -46,6 +50,10 @@
 		561010B31F17B14C006C3273 /* UINib+IDPExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UINib+IDPExtensions.swift"; sourceTree = "<group>"; };
 		561010B51F17B234006C3273 /* Array+IDPExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+IDPExtensions.swift"; sourceTree = "<group>"; };
 		5642CE131F18A287002D9F5C /* UITableView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+Extensions.swift"; sourceTree = "<group>"; };
+		5642CE161F18BEFB002D9F5C /* IDPModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IDPModel.swift; sourceTree = "<group>"; };
+		5642CE191F18C089002D9F5C /* IDPArrayModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IDPArrayModel.swift; sourceTree = "<group>"; };
+		5642CE1B1F18D521002D9F5C /* Optional+IDPExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Optional+IDPExtensions.swift"; sourceTree = "<group>"; };
+		5642CE1E1F18F20E002D9F5C /* IDPUsersModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IDPUsersModel.swift; sourceTree = "<group>"; };
 		5669064B1F1382A400A4980E /* SwiftTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		566906621F138C2100A4980E /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		566906631F138C2100A4980E /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -115,8 +123,33 @@
 				561010B31F17B14C006C3273 /* UINib+IDPExtensions.swift */,
 				561010B51F17B234006C3273 /* Array+IDPExtensions.swift */,
 				5642CE131F18A287002D9F5C /* UITableView+Extensions.swift */,
+				5642CE1B1F18D521002D9F5C /* Optional+IDPExtensions.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		5642CE151F18BEF1002D9F5C /* IDPModel */ = {
+			isa = PBXGroup;
+			children = (
+				5642CE161F18BEFB002D9F5C /* IDPModel.swift */,
+			);
+			path = IDPModel;
+			sourceTree = "<group>";
+		};
+		5642CE181F18C07D002D9F5C /* IDPArrayModel */ = {
+			isa = PBXGroup;
+			children = (
+				5642CE191F18C089002D9F5C /* IDPArrayModel.swift */,
+			);
+			path = IDPArrayModel;
+			sourceTree = "<group>";
+		};
+		5642CE1D1F18F204002D9F5C /* IDPUsersModel */ = {
+			isa = PBXGroup;
+			children = (
+				5642CE1E1F18F20E002D9F5C /* IDPUsersModel.swift */,
+			);
+			path = IDPUsersModel;
 			sourceTree = "<group>";
 		};
 		566906421F1382A400A4980E = {
@@ -187,6 +220,9 @@
 		566906731F13949E00A4980E /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				5642CE1D1F18F204002D9F5C /* IDPUsersModel */,
+				5642CE181F18C07D002D9F5C /* IDPArrayModel */,
+				5642CE151F18BEF1002D9F5C /* IDPModel */,
 				561010AE1F17AB61006C3273 /* IDPUser */,
 				561010941F177EF3006C3273 /* IDPBaseContext.swift */,
 				561010981F17807C006C3273 /* IDPLoginContext.swift */,
@@ -336,13 +372,17 @@
 			files = (
 				561010A91F179BF9006C3273 /* IDPUserCell.swift in Sources */,
 				561010951F177EF3006C3273 /* IDPBaseContext.swift in Sources */,
+				5642CE1F1F18F20E002D9F5C /* IDPUsersModel.swift in Sources */,
 				5610109B1F178B98006C3273 /* IDPNavigationController.swift in Sources */,
 				5610109E1F178D55006C3273 /* IDPLoginViewController.swift in Sources */,
 				561010B41F17B14C006C3273 /* UINib+IDPExtensions.swift in Sources */,
+				5642CE1C1F18D521002D9F5C /* Optional+IDPExtensions.swift in Sources */,
 				561010AD1F17A0C9006C3273 /* IDPTableViewCell.swift in Sources */,
 				561010A21F1793C8006C3273 /* IDPFriendsViewController.swift in Sources */,
 				561010B01F17AB83006C3273 /* IDPUser.swift in Sources */,
+				5642CE1A1F18C089002D9F5C /* IDPArrayModel.swift in Sources */,
 				5642CE141F18A287002D9F5C /* UITableView+Extensions.swift in Sources */,
+				5642CE171F18BEFB002D9F5C /* IDPModel.swift in Sources */,
 				5669066C1F138C2100A4980E /* AppDelegate.swift in Sources */,
 				561010991F17807C006C3273 /* IDPLoginContext.swift in Sources */,
 				561010A51F17964F006C3273 /* IDPFriendListContext.swift in Sources */,

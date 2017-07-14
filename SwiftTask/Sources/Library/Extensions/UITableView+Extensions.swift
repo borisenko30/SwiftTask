@@ -8,18 +8,34 @@
 
 import UIKit
 
+func cast<Value, Result>(_ value: Value) -> Result? {
+    return value as? Result
+}
+
 extension UITableView {
-    func dequeueReusableCell<Value>(cellClass: Value.Type) -> UITableViewCell? {
-        return self.dequeueReusableCell(withIdentifier: String(describing: cellClass))
+    func dequeueReusableCell<Result: UITableViewCell>(
+        cellClass: Result.Type,
+        for indexPath: IndexPath
+    )
+        -> UITableViewCell
+    {
+        let identifier = String(describing: cellClass)
+        self.register(UINib.nib(className: cellClass), forCellReuseIdentifier: identifier)
+        
+        return self.dequeueReusableCell(withIdentifier: identifier, for: indexPath)
     }
     
-    func reusableCell<Value>(cellClass: Value.Type) -> UITableViewCell? {
-        var cell: Any? = self.dequeueReusableCell(cellClass: cellClass)
+    func reusableCell<Result: UITableViewCell>(
+        cellClass: Result.Type,
+        for indexPath: IndexPath,
+        configure: (Result) -> ()
+    )
+        -> UITableViewCell
+    {
+        let cell = self.dequeueReusableCell(cellClass: cellClass, for: indexPath)
         
-        if cell == nil {
-            cell = UINib.object(className:cellClass);
-        }
+        cast(cell).do(configure)
         
-        return cell as! UITableViewCell?;
+        return cell
     }
 }

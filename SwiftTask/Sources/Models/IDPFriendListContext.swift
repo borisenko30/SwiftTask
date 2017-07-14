@@ -11,39 +11,41 @@ import FBSDKCoreKit
 
 class IDPFriendListContext: IDPBaseContext {
     override func execute(object: AnyObject, completionHandler: @escaping CompletionHandler) {
-        self.friendList(callBack: fetchFriendList)
-        completionHandler(true)
+        let fbRequestFriends: FBSDKGraphRequest =
+            FBSDKGraphRequest(
+                graphPath:"me/friends",
+                parameters:["fields": "id,name,gender,picture,friends.limit(100){picture,name}"]
+        )
+        
+        fbRequestFriends.start { (connection, result, error) in
+            if error == nil && result != nil {
+                self.fillFriendList(object: object, result: result)
+                completionHandler(true)
+            } else {
+                print("Error \(String(describing: error))")
+            }
+        }
+        
     }
     
     override func cancel() {
         
     }
     
-    public func friendList(callBack: @escaping (Any?)->Void) {
-        let fbRequestFriends: FBSDKGraphRequest =
-            FBSDKGraphRequest(
-                graphPath:"me/friends",
-                parameters:["fields": "id,name,gender,picture,friends.limit(100){picture,name}"]
-            )
-        
-        fbRequestFriends.start { (connection, result, error) in
-            if error == nil && result != nil {
-                callBack(result)
-            } else {
-                print("Error \(String(describing: error))")
-            }
-        }
-    }
     
-    func fetchFriendList(result:Any?) {
+    func fillFriendList(object: AnyObject, result:Any?) {
         let dictionary = result as! NSDictionary
         let friends = dictionary.value(forKey: "data") as! NSArray
-        var count = 1
+
         if let array = friends as? [NSDictionary] {
             for friend : NSDictionary in array {
-                let name = friend.value(forKey: "name") as! NSString
-                print("\(count) \(name)")
-                count += 1
+                let name = friend.value(forKey: "name") as! String
+                let wrappedPicture = friend.value(forKey: "picture") as! NSDictionary
+                let picture = wrappedPicture.value(forKey: "data") as! NSDictionary
+                let url = picture.value(forKey: "url") as! String
+                
+                let user: IDPUser = IDPUser(name: name, imageURL: URL(fileURLWithPath: url))
+                (object as! IDPFriendsViewController).friends?.add(object: user)
             }
         }
     }

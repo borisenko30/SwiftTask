@@ -8,11 +8,23 @@
 
 import UIKit
 
-class IDPUser {
+class IDPUser: Comparable {
     let name: String
+    let imageURL: URL
     
-    init(name: String) {
+    init(name: String, imageURL: URL) {
         self.name = name
+        self.imageURL = imageURL
+    }
+    
+    // MARK: Comparable methods
+    
+    static func < (lhs: IDPUser, rhs: IDPUser) -> Bool {
+        return false
+    }
+    
+    static func == (lhs: IDPUser, rhs: IDPUser) -> Bool {
+        return lhs === rhs
     }
 }
 

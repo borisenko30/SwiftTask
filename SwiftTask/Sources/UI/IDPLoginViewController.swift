@@ -20,7 +20,13 @@ class IDPLoginViewController: UIViewController {
     
     @IBAction func onLoginButtonTouch() {
         IDPLoginContext().execute(object: self) {_ in
-            self.navigationController?.pushViewController(IDPFriendsViewController(), animated: true)
+            let controller = IDPFriendsViewController()
+            controller.friends = IDPUsersModel()
+            
+            IDPFriendListContext().execute(object: controller) { _ in
+                print("friendList received...")
+                self.navigationController?.pushViewController(controller, animated: true)
+            }
         }
     }
 }

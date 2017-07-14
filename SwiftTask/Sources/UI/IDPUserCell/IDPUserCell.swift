@@ -19,6 +19,13 @@ class IDPUserCell: IDPTableViewCell {
         super.init(coder: aDecoder)
     }
     
+    public override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+        userImageView = UIView()
+        nameLabel = UILabel()
+        
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+    }
+    
     var user: IDPUser? {
         didSet {
             self.fill(user: user)
