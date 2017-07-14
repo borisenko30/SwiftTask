@@ -26,6 +26,9 @@
 		5642CE1A1F18C089002D9F5C /* IDPArrayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5642CE191F18C089002D9F5C /* IDPArrayModel.swift */; };
 		5642CE1C1F18D521002D9F5C /* Optional+IDPExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5642CE1B1F18D521002D9F5C /* Optional+IDPExtensions.swift */; };
 		5642CE1F1F18F20E002D9F5C /* IDPUsersModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5642CE1E1F18F20E002D9F5C /* IDPUsersModel.swift */; };
+		5642CE261F191060002D9F5C /* IDPLoadingViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5642CE251F191060002D9F5C /* IDPLoadingViewContainer.swift */; };
+		5642CE281F1910BE002D9F5C /* IDPLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5642CE271F1910BE002D9F5C /* IDPLoadingView.swift */; };
+		5642CE2A1F1910D3002D9F5C /* IDPLoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5642CE291F1910D3002D9F5C /* IDPLoadingView.xib */; };
 		5669066C1F138C2100A4980E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566906621F138C2100A4980E /* AppDelegate.swift */; };
 		5669066D1F138C2100A4980E /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 566906631F138C2100A4980E /* Info.plist */; };
 		5669066F1F138C2100A4980E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 566906661F138C2100A4980E /* Assets.xcassets */; };
@@ -54,6 +57,9 @@
 		5642CE191F18C089002D9F5C /* IDPArrayModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IDPArrayModel.swift; sourceTree = "<group>"; };
 		5642CE1B1F18D521002D9F5C /* Optional+IDPExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Optional+IDPExtensions.swift"; sourceTree = "<group>"; };
 		5642CE1E1F18F20E002D9F5C /* IDPUsersModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IDPUsersModel.swift; sourceTree = "<group>"; };
+		5642CE251F191060002D9F5C /* IDPLoadingViewContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IDPLoadingViewContainer.swift; sourceTree = "<group>"; };
+		5642CE271F1910BE002D9F5C /* IDPLoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IDPLoadingView.swift; sourceTree = "<group>"; };
+		5642CE291F1910D3002D9F5C /* IDPLoadingView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IDPLoadingView.xib; sourceTree = "<group>"; };
 		5669064B1F1382A400A4980E /* SwiftTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		566906621F138C2100A4980E /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		566906631F138C2100A4980E /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -152,6 +158,32 @@
 			path = IDPUsersModel;
 			sourceTree = "<group>";
 		};
+		5642CE201F190FE6002D9F5C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				5642CE231F191034002D9F5C /* IDPLoadingViewContainer */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		5642CE231F191034002D9F5C /* IDPLoadingViewContainer */ = {
+			isa = PBXGroup;
+			children = (
+				5642CE241F191034002D9F5C /* Private */,
+				5642CE251F191060002D9F5C /* IDPLoadingViewContainer.swift */,
+			);
+			path = IDPLoadingViewContainer;
+			sourceTree = "<group>";
+		};
+		5642CE241F191034002D9F5C /* Private */ = {
+			isa = PBXGroup;
+			children = (
+				5642CE271F1910BE002D9F5C /* IDPLoadingView.swift */,
+				5642CE291F1910D3002D9F5C /* IDPLoadingView.xib */,
+			);
+			path = Private;
+			sourceTree = "<group>";
+		};
 		566906421F1382A400A4980E = {
 			isa = PBXGroup;
 			children = (
@@ -234,6 +266,7 @@
 		566906741F13949E00A4980E /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				5642CE201F190FE6002D9F5C /* Views */,
 				561010A61F179B98006C3273 /* IDPUserCell */,
 				5610109A1F178B98006C3273 /* IDPNavigationController.swift */,
 				5610109C1F178D55006C3273 /* IDPLoginViewController.swift */,
@@ -311,6 +344,7 @@
 				561010AA1F179BF9006C3273 /* IDPUserCell.xib in Resources */,
 				5669066F1F138C2100A4980E /* Assets.xcassets in Resources */,
 				5610109F1F178D55006C3273 /* IDPLoginViewController.xib in Resources */,
+				5642CE2A1F1910D3002D9F5C /* IDPLoadingView.xib in Resources */,
 				5669066D1F138C2100A4980E /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -372,6 +406,7 @@
 			files = (
 				561010A91F179BF9006C3273 /* IDPUserCell.swift in Sources */,
 				561010951F177EF3006C3273 /* IDPBaseContext.swift in Sources */,
+				5642CE281F1910BE002D9F5C /* IDPLoadingView.swift in Sources */,
 				5642CE1F1F18F20E002D9F5C /* IDPUsersModel.swift in Sources */,
 				5610109B1F178B98006C3273 /* IDPNavigationController.swift in Sources */,
 				5610109E1F178D55006C3273 /* IDPLoginViewController.swift in Sources */,
@@ -387,6 +422,7 @@
 				561010991F17807C006C3273 /* IDPLoginContext.swift in Sources */,
 				561010A51F17964F006C3273 /* IDPFriendListContext.swift in Sources */,
 				561010B61F17B234006C3273 /* Array+IDPExtensions.swift in Sources */,
+				5642CE261F191060002D9F5C /* IDPLoadingViewContainer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
