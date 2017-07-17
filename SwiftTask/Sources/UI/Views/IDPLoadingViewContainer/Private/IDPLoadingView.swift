@@ -9,14 +9,37 @@
 
 import UIKit
 
-class IDPLoadingView: UIView {
+class IDPLoadingView: UIView, IDPLoading {
 
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+    @IBOutlet var indicator: UIActivityIndicatorView?
+    
+    var loading: Bool = true
+    
+    let IDPAnimationDuration = 1.0
+    
+    class func loadingView(superView: UIView) -> IDPLoadingView {
+        let loadingView: IDPLoadingView = UINib.object(className: IDPLoadingView.self)!
+        loadingView.frame = superView.bounds
+        superView.addSubview(loadingView)
+        loadingView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        
+        return loadingView
     }
-    */
-
+    
+    // MARK: IDPLoading protocol
+    
+    func set(loading: Bool, animations: (() -> Void)? = nil, completionHandler: ((Bool) -> Void)? = nil) {
+        if animations == nil {
+            self.loading = loading
+        } else {
+            UIView.animate(withDuration: IDPAnimationDuration,
+                           animations: animations!,
+                           completion: { (finished: Bool) -> Void in
+                                self.loading = loading
+                                if completionHandler != nil {
+                                    completionHandler!(finished)
+                                }
+                            })
+        }
+    }
 }

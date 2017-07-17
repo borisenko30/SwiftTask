@@ -10,6 +10,9 @@ import UIKit
 
 class IDPArrayModel<T:Comparable>: IDPModel {
     var objects: Array<T> = []
+    var count: Int {
+         return self.objects.count
+    }
     
     func add(object: T) {
         objects.append(object)
@@ -29,10 +32,6 @@ class IDPArrayModel<T:Comparable>: IDPModel {
         for object in objects {
             self.remove(object: object)
         }
-    }
-    
-    func count() -> Int {
-        return self.objects.count
     }
     
     func index(of object: T) -> Int? {

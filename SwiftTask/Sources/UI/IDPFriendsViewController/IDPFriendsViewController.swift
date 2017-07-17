@@ -10,16 +10,27 @@ import UIKit
 
 class IDPFriendsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet var tableView: UITableView?
+    
+    @IBOutlet var mainView: IDPFriendsView?
+    
     var friends: IDPUsersModel?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.initMainView()
+    }
+    
+    private func initMainView() -> () {
+        if self.mainView == nil {
+            self.mainView = self.view as! IDPFriendsView!
+        }
     }
     
     // MARK: UITableViewDataSource
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return (self.friends?.count())!
+        return (self.friends?.count)!
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

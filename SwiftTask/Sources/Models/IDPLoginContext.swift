@@ -24,6 +24,6 @@ class IDPLoginContext: IDPBaseContext {
                 completionHandler(true)
             }
         }
-        completionHandler(true)
+        completionHandler(false)
     }
 }
