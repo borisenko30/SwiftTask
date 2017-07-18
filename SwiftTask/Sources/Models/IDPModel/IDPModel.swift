@@ -9,14 +9,13 @@
 import UIKit
 
 enum IDPModelState: Int {
-    case    IDPModelDidUnload,
-            IDPModelDidLoad,
-            IDPModelDidFailLoading,
-            IDPModelWillLoad,
-            IDPModelStateCount
+    case    didUnload,
+            didLoad,
+            didFailLoading,
+            willLoad
 }
 
-class IDPModel {
+class IDPModel: IDPObservableObject, Comparable {
     func load() {
         self.performLoading()
     }
@@ -24,5 +23,15 @@ class IDPModel {
     // should be overriden in subclasses
     func performLoading() {
         
+    }
+    
+    // MARK: Comparable methods
+    
+    static func < (lhs: IDPModel, rhs: IDPModel) -> Bool {
+        return false
+    }
+    
+    static func == (lhs: IDPModel, rhs: IDPModel) -> Bool {
+        return lhs === rhs
     }
 }

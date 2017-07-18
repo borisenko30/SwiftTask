@@ -16,16 +16,20 @@ class IDPObservableObject: NSObject {
     // setters for state
     var state: Int = 0 {
         didSet{
-            if state != oldValue {
-                self.notify(state: state)
+            IDPGCD.synchronize(self) {
+                if self.state != oldValue {
+                    self.notify(state: self.state)
+                }
             }
         }
     }
     
     func set(state: Int, for object: Any?) {
-        if self.state != state {
-            self.state = state
-            self.notify(state: state, object: object)
+        IDPGCD.synchronize(self) {
+            if self.state != state {
+                self.state = state
+                self.notify(state: state, object: object)
+            }
         }
     }
     
@@ -53,8 +57,10 @@ class IDPObservableObject: NSObject {
             return
         }
         
-        for controller in observationControllers.objectEnumerator() {
-            handler?(controller as! IDPObservationController)
+        IDPGCD.synchronize(self) {
+            for controller in self.observationControllers.objectEnumerator() {
+                handler?(controller as! IDPObservationController)
+            }
         }
     }
 }

@@ -16,6 +16,14 @@
 		561010B41F17B14C006C3273 /* UINib+IDPExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561010B31F17B14C006C3273 /* UINib+IDPExtensions.swift */; };
 		561010B61F17B234006C3273 /* Array+IDPExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561010B51F17B234006C3273 /* Array+IDPExtensions.swift */; };
 		563FE3F71F1DF3C8000331B9 /* IDPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563FE3F61F1DF3C8000331B9 /* IDPViewController.swift */; };
+		563FE3FE1F1DF791000331B9 /* IDPObservableObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563FE3FA1F1DF791000331B9 /* IDPObservableObject.swift */; };
+		563FE3FF1F1DF791000331B9 /* IDPObservationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563FE3FB1F1DF791000331B9 /* IDPObservationController.swift */; };
+		563FE4001F1DF791000331B9 /* IDPTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563FE3FD1F1DF791000331B9 /* IDPTableViewCell.swift */; };
+		563FE4031F1DF7F7000331B9 /* IDPCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563FE4021F1DF7F7000331B9 /* IDPCache.swift */; };
+		563FE4061F1DFDC3000331B9 /* IDPImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563FE4051F1DFDC3000331B9 /* IDPImageModel.swift */; };
+		563FE4081F1E0042000331B9 /* URL+IDPExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563FE4071F1E0042000331B9 /* URL+IDPExtensions.swift */; };
+		563FE40A1F1E00A0000331B9 /* FileManager+IDPExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563FE4091F1E00A0000331B9 /* FileManager+IDPExtensions.swift */; };
+		563FE40F1F1E2E62000331B9 /* IDPGCD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563FE40E1F1E2E62000331B9 /* IDPGCD.swift */; };
 		5642CE141F18A287002D9F5C /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5642CE131F18A287002D9F5C /* UITableView+Extensions.swift */; };
 		5642CE171F18BEFB002D9F5C /* IDPModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5642CE161F18BEFB002D9F5C /* IDPModel.swift */; };
 		5642CE1A1F18C089002D9F5C /* IDPArrayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5642CE191F18C089002D9F5C /* IDPArrayModel.swift */; };
@@ -37,9 +45,6 @@
 		569022B21F1CAFD300FAB3BC /* IDPFriendsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 569022B01F1CAFD300FAB3BC /* IDPFriendsViewController.xib */; };
 		569022B41F1CAFEB00FAB3BC /* IDPFriendsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569022B31F1CAFEB00FAB3BC /* IDPFriendsView.swift */; };
 		569022B71F1CB42800FAB3BC /* IDPNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569022B61F1CB42800FAB3BC /* IDPNavigationController.swift */; };
-		569022BC1F1CCACF00FAB3BC /* IDPTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569022BB1F1CCACF00FAB3BC /* IDPTableViewCell.swift */; };
-		569022BE1F1CCB1000FAB3BC /* IDPObservableObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569022BD1F1CCB1000FAB3BC /* IDPObservableObject.swift */; };
-		569022C01F1CD09900FAB3BC /* IDPObservationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569022BF1F1CD09900FAB3BC /* IDPObservationController.swift */; };
 		8821E6698657DAA8A6D496EE /* Pods_SwiftTask.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35D32BC925E9AD1A66F3F5DF /* Pods_SwiftTask.framework */; };
 /* End PBXBuildFile section */
 
@@ -54,6 +59,14 @@
 		561010B31F17B14C006C3273 /* UINib+IDPExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UINib+IDPExtensions.swift"; sourceTree = "<group>"; };
 		561010B51F17B234006C3273 /* Array+IDPExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+IDPExtensions.swift"; sourceTree = "<group>"; };
 		563FE3F61F1DF3C8000331B9 /* IDPViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IDPViewController.swift; sourceTree = "<group>"; };
+		563FE3FA1F1DF791000331B9 /* IDPObservableObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IDPObservableObject.swift; sourceTree = "<group>"; };
+		563FE3FB1F1DF791000331B9 /* IDPObservationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IDPObservationController.swift; sourceTree = "<group>"; };
+		563FE3FD1F1DF791000331B9 /* IDPTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IDPTableViewCell.swift; sourceTree = "<group>"; };
+		563FE4021F1DF7F7000331B9 /* IDPCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IDPCache.swift; sourceTree = "<group>"; };
+		563FE4051F1DFDC3000331B9 /* IDPImageModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IDPImageModel.swift; sourceTree = "<group>"; };
+		563FE4071F1E0042000331B9 /* URL+IDPExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "URL+IDPExtensions.swift"; sourceTree = "<group>"; };
+		563FE4091F1E00A0000331B9 /* FileManager+IDPExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FileManager+IDPExtensions.swift"; sourceTree = "<group>"; };
+		563FE40E1F1E2E62000331B9 /* IDPGCD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IDPGCD.swift; sourceTree = "<group>"; };
 		5642CE131F18A287002D9F5C /* UITableView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+Extensions.swift"; sourceTree = "<group>"; };
 		5642CE161F18BEFB002D9F5C /* IDPModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IDPModel.swift; sourceTree = "<group>"; };
 		5642CE191F18C089002D9F5C /* IDPArrayModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IDPArrayModel.swift; sourceTree = "<group>"; };
@@ -76,9 +89,6 @@
 		569022B01F1CAFD300FAB3BC /* IDPFriendsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IDPFriendsViewController.xib; sourceTree = "<group>"; };
 		569022B31F1CAFEB00FAB3BC /* IDPFriendsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IDPFriendsView.swift; sourceTree = "<group>"; };
 		569022B61F1CB42800FAB3BC /* IDPNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IDPNavigationController.swift; sourceTree = "<group>"; };
-		569022BB1F1CCACF00FAB3BC /* IDPTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IDPTableViewCell.swift; sourceTree = "<group>"; };
-		569022BD1F1CCB1000FAB3BC /* IDPObservableObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IDPObservableObject.swift; sourceTree = "<group>"; };
-		569022BF1F1CD09900FAB3BC /* IDPObservationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IDPObservationController.swift; sourceTree = "<group>"; };
 		6F0951B6731E00BA6E50E3F5 /* Pods-SwiftTask.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftTask.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftTask/Pods-SwiftTask.debug.xcconfig"; sourceTree = "<group>"; };
 		9AB022A488F5D6800696B05F /* Pods-SwiftTask.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftTask.release.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftTask/Pods-SwiftTask.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -136,6 +146,8 @@
 				561010B51F17B234006C3273 /* Array+IDPExtensions.swift */,
 				5642CE131F18A287002D9F5C /* UITableView+Extensions.swift */,
 				5642CE1B1F18D521002D9F5C /* Optional+IDPExtensions.swift */,
+				563FE4071F1E0042000331B9 /* URL+IDPExtensions.swift */,
+				563FE4091F1E00A0000331B9 /* FileManager+IDPExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -146,6 +158,58 @@
 				563FE3F61F1DF3C8000331B9 /* IDPViewController.swift */,
 			);
 			path = IDPViewController;
+			sourceTree = "<group>";
+		};
+		563FE3F81F1DF791000331B9 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				563FE40D1F1E2E5B000331B9 /* IDPGCD */,
+				563FE4011F1DF7C9000331B9 /* IDPCache */,
+				563FE3F91F1DF791000331B9 /* IDPObservableObject */,
+				563FE3FC1F1DF791000331B9 /* IDPTableViewCell */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		563FE3F91F1DF791000331B9 /* IDPObservableObject */ = {
+			isa = PBXGroup;
+			children = (
+				563FE3FA1F1DF791000331B9 /* IDPObservableObject.swift */,
+				563FE3FB1F1DF791000331B9 /* IDPObservationController.swift */,
+			);
+			path = IDPObservableObject;
+			sourceTree = "<group>";
+		};
+		563FE3FC1F1DF791000331B9 /* IDPTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				563FE3FD1F1DF791000331B9 /* IDPTableViewCell.swift */,
+			);
+			path = IDPTableViewCell;
+			sourceTree = "<group>";
+		};
+		563FE4011F1DF7C9000331B9 /* IDPCache */ = {
+			isa = PBXGroup;
+			children = (
+				563FE4021F1DF7F7000331B9 /* IDPCache.swift */,
+			);
+			path = IDPCache;
+			sourceTree = "<group>";
+		};
+		563FE4041F1DFDA3000331B9 /* IDPImageModel */ = {
+			isa = PBXGroup;
+			children = (
+				563FE4051F1DFDC3000331B9 /* IDPImageModel.swift */,
+			);
+			path = IDPImageModel;
+			sourceTree = "<group>";
+		};
+		563FE40D1F1E2E5B000331B9 /* IDPGCD */ = {
+			isa = PBXGroup;
+			children = (
+				563FE40E1F1E2E62000331B9 /* IDPGCD.swift */,
+			);
+			path = IDPGCD;
 			sourceTree = "<group>";
 		};
 		5642CE151F18BEF1002D9F5C /* IDPModel */ = {
@@ -248,7 +312,6 @@
 		5669066B1F138C2100A4980E /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				569022B81F1CCACF00FAB3BC /* Classes */,
 				566906721F13949E00A4980E /* Library */,
 				566906731F13949E00A4980E /* Models */,
 				566906741F13949E00A4980E /* UI */,
@@ -259,6 +322,7 @@
 		566906721F13949E00A4980E /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				563FE3F81F1DF791000331B9 /* Classes */,
 				569022A11F1C97AD00FAB3BC /* Protocols */,
 				561010B21F17B130006C3273 /* Extensions */,
 			);
@@ -268,6 +332,7 @@
 		566906731F13949E00A4980E /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				563FE4041F1DFDA3000331B9 /* IDPImageModel */,
 				5642CE1D1F18F204002D9F5C /* IDPUsersModel */,
 				5642CE181F18C07D002D9F5C /* IDPArrayModel */,
 				5642CE151F18BEF1002D9F5C /* IDPModel */,
@@ -334,33 +399,6 @@
 				569022B61F1CB42800FAB3BC /* IDPNavigationController.swift */,
 			);
 			path = IDPNavigationViewController;
-			sourceTree = "<group>";
-		};
-		569022B81F1CCACF00FAB3BC /* Classes */ = {
-			isa = PBXGroup;
-			children = (
-				569022B91F1CCACF00FAB3BC /* IDPObservableObject */,
-				569022BA1F1CCACF00FAB3BC /* IDPTableViewCell */,
-			);
-			name = Classes;
-			path = Library/Classes;
-			sourceTree = "<group>";
-		};
-		569022B91F1CCACF00FAB3BC /* IDPObservableObject */ = {
-			isa = PBXGroup;
-			children = (
-				569022BD1F1CCB1000FAB3BC /* IDPObservableObject.swift */,
-				569022BF1F1CD09900FAB3BC /* IDPObservationController.swift */,
-			);
-			path = IDPObservableObject;
-			sourceTree = "<group>";
-		};
-		569022BA1F1CCACF00FAB3BC /* IDPTableViewCell */ = {
-			isa = PBXGroup;
-			children = (
-				569022BB1F1CCACF00FAB3BC /* IDPTableViewCell.swift */,
-			);
-			path = IDPTableViewCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -493,16 +531,20 @@
 				569022A61F1CA5D700FAB3BC /* IDPImageView.swift in Sources */,
 				561010A91F179BF9006C3273 /* IDPUserCell.swift in Sources */,
 				561010951F177EF3006C3273 /* IDPBaseContext.swift in Sources */,
+				563FE4061F1DFDC3000331B9 /* IDPImageModel.swift in Sources */,
 				5642CE281F1910BE002D9F5C /* IDPLoadingView.swift in Sources */,
 				569022AD1F1CACDD00FAB3BC /* IDPLoginView.swift in Sources */,
+				563FE4001F1DF791000331B9 /* IDPTableViewCell.swift in Sources */,
 				5642CE1F1F18F20E002D9F5C /* IDPUsersModel.swift in Sources */,
 				569022AA1F1CACAB00FAB3BC /* IDPLoginViewController.swift in Sources */,
+				563FE4081F1E0042000331B9 /* URL+IDPExtensions.swift in Sources */,
 				561010B41F17B14C006C3273 /* UINib+IDPExtensions.swift in Sources */,
+				563FE40A1F1E00A0000331B9 /* FileManager+IDPExtensions.swift in Sources */,
 				5642CE1C1F18D521002D9F5C /* Optional+IDPExtensions.swift in Sources */,
 				561010B01F17AB83006C3273 /* IDPUser.swift in Sources */,
 				569022B41F1CAFEB00FAB3BC /* IDPFriendsView.swift in Sources */,
 				5642CE1A1F18C089002D9F5C /* IDPArrayModel.swift in Sources */,
-				569022C01F1CD09900FAB3BC /* IDPObservationController.swift in Sources */,
+				563FE3FF1F1DF791000331B9 /* IDPObservationController.swift in Sources */,
 				5642CE141F18A287002D9F5C /* UITableView+Extensions.swift in Sources */,
 				569022B11F1CAFD300FAB3BC /* IDPFriendsViewController.swift in Sources */,
 				5642CE171F18BEFB002D9F5C /* IDPModel.swift in Sources */,
@@ -510,10 +552,11 @@
 				5669066C1F138C2100A4980E /* AppDelegate.swift in Sources */,
 				561010991F17807C006C3273 /* IDPLoginContext.swift in Sources */,
 				561010A51F17964F006C3273 /* IDPFriendListContext.swift in Sources */,
-				569022BC1F1CCACF00FAB3BC /* IDPTableViewCell.swift in Sources */,
 				561010B61F17B234006C3273 /* Array+IDPExtensions.swift in Sources */,
 				569022B71F1CB42800FAB3BC /* IDPNavigationController.swift in Sources */,
-				569022BE1F1CCB1000FAB3BC /* IDPObservableObject.swift in Sources */,
+				563FE3FE1F1DF791000331B9 /* IDPObservableObject.swift in Sources */,
+				563FE40F1F1E2E62000331B9 /* IDPGCD.swift in Sources */,
+				563FE4031F1DF7F7000331B9 /* IDPCache.swift in Sources */,
 				569022A31F1C97EC00FAB3BC /* IDPLoading.swift in Sources */,
 				5642CE261F191060002D9F5C /* IDPLoadingViewContainer.swift in Sources */,
 			);

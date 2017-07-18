@@ -10,12 +10,68 @@ import UIKit
 
 class IDPImageView: IDPLoadingViewContainer {
 
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+    var contentImageView: UIImageView? {
+        didSet {
+            if contentImageView != oldValue  {
+                oldValue?.removeFromSuperview()
+                self.addSubview(contentImageView!)
+            }
+        }
     }
-    */
-
+    
+    var imageModel: IDPImageModel? {
+        didSet {
+            if imageModel != oldValue {
+                self.contentImageView?.image = nil
+                self.observer = imageModel?.observationController(observer: self)
+                imageModel?.load()
+            }
+        }
+    }
+    
+    var observer: IDPObservationController? {
+        didSet {
+            if observer != oldValue {
+                self.prepare(observer: observer)
+            }
+        }
+    }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        self.initSubviews()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        self.initSubviews()
+    }
+    
+    func initSubviews() {
+        let imageView = UIImageView(frame: self.bounds)
+        imageView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        self.contentImageView = imageView
+    }
+    
+    
+    func prepare(observer: IDPObservationController?) {
+        let willLoadHandler = {(controller: IDPObservationController, userInfo: Any?) -> Void in
+            self.loading = true
+        }
+        
+        observer?.set(handler: willLoadHandler, for: IDPModelState.willLoad.rawValue)
+        
+        let didFailHandler = {(controller: IDPObservationController, userInfo: Any?) -> Void in
+            self.imageModel?.load()
+        }
+        
+        observer?.set(handler: didFailHandler, for: IDPModelState.willLoad.rawValue)
+        
+        let didLoadHandler = {(controller: IDPObservationController, userInfo: Any?) -> Void in
+            self.loading = false
+            self.contentImageView?.image = (userInfo as? IDPImageModel)?.image
+        }
+        
+        observer?.set(handler: didLoadHandler, for: IDPModelState.willLoad.rawValue)
+    }
 }
