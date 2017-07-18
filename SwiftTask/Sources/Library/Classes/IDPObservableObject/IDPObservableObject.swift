@@ -10,14 +10,14 @@ import UIKit
 
 typealias IDPControllerNotificationBlock = (IDPObservationController) -> Void
 
-class IDPObservableObject {
+class IDPObservableObject: NSObject {
     var observationControllers: NSHashTable<IDPObservationController> = NSHashTable.weakObjects()
     
     // setters for state
-    var state: Int? {
+    var state: Int = 0 {
         didSet{
             if state != oldValue {
-                self.notify(state: state!)
+                self.notify(state: state)
             }
         }
     }

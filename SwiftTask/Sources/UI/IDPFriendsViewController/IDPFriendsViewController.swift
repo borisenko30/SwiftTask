@@ -8,16 +8,20 @@
 
 import UIKit
 
-class IDPFriendsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class IDPFriendsViewController: IDPViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet var tableView: UITableView?
     
     @IBOutlet var mainView: IDPFriendsView?
     
     var friends: IDPUsersModel?
+    
+    var friendListContext: IDPFriendListContext?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        friendListContext = IDPFriendListContext()
+        self.observer = friendListContext?.observationController(observer: self)
+        friendListContext?.execute(object: self)
         self.initMainView()
     }
     
@@ -46,5 +50,15 @@ class IDPFriendsViewController: UIViewController, UITableViewDataSource, UITable
     @nonobjc public func tableView(_ tableView: UITableView, didEndDisplaying cell: IDPUserCell, forRowAt indexPath: IndexPath)
     {
         cell.user = nil
+    }
+    
+    // MARK: IDPViewContorller override
+    override func prepare(observer: IDPObservationController?) {
+        let handler = {(controller: IDPObservationController, userInfo: Any?) -> Void in
+            self.mainView?.loading = false
+            self.tableView?.reloadData()
+        }
+        
+        observer?.set(handler: handler, for: IDPContextState.didLoad.rawValue)
     }
 }

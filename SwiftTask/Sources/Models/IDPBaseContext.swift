@@ -8,10 +8,13 @@
 
 import UIKit
 
-typealias CompletionHandler = (_ success: Bool) -> Void
+enum IDPContextState: Int {
+    case didUnload, didLoad, didFailLoading, willLoad
+}
 
-class IDPBaseContext {
-    func execute(object: AnyObject, completionHandler: @escaping CompletionHandler) {
+class IDPBaseContext: IDPObservableObject {
+    
+    func execute(object: AnyObject) {
         
     }
     

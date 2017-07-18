@@ -15,6 +15,7 @@
 		561010B01F17AB83006C3273 /* IDPUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561010AF1F17AB83006C3273 /* IDPUser.swift */; };
 		561010B41F17B14C006C3273 /* UINib+IDPExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561010B31F17B14C006C3273 /* UINib+IDPExtensions.swift */; };
 		561010B61F17B234006C3273 /* Array+IDPExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561010B51F17B234006C3273 /* Array+IDPExtensions.swift */; };
+		563FE3F71F1DF3C8000331B9 /* IDPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563FE3F61F1DF3C8000331B9 /* IDPViewController.swift */; };
 		5642CE141F18A287002D9F5C /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5642CE131F18A287002D9F5C /* UITableView+Extensions.swift */; };
 		5642CE171F18BEFB002D9F5C /* IDPModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5642CE161F18BEFB002D9F5C /* IDPModel.swift */; };
 		5642CE1A1F18C089002D9F5C /* IDPArrayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5642CE191F18C089002D9F5C /* IDPArrayModel.swift */; };
@@ -52,6 +53,7 @@
 		561010AF1F17AB83006C3273 /* IDPUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IDPUser.swift; sourceTree = "<group>"; };
 		561010B31F17B14C006C3273 /* UINib+IDPExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UINib+IDPExtensions.swift"; sourceTree = "<group>"; };
 		561010B51F17B234006C3273 /* Array+IDPExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+IDPExtensions.swift"; sourceTree = "<group>"; };
+		563FE3F61F1DF3C8000331B9 /* IDPViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IDPViewController.swift; sourceTree = "<group>"; };
 		5642CE131F18A287002D9F5C /* UITableView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+Extensions.swift"; sourceTree = "<group>"; };
 		5642CE161F18BEFB002D9F5C /* IDPModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IDPModel.swift; sourceTree = "<group>"; };
 		5642CE191F18C089002D9F5C /* IDPArrayModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IDPArrayModel.swift; sourceTree = "<group>"; };
@@ -136,6 +138,14 @@
 				5642CE1B1F18D521002D9F5C /* Optional+IDPExtensions.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		563FE3F51F1DF3A6000331B9 /* IDPViewController */ = {
+			isa = PBXGroup;
+			children = (
+				563FE3F61F1DF3C8000331B9 /* IDPViewController.swift */,
+			);
+			path = IDPViewController;
 			sourceTree = "<group>";
 		};
 		5642CE151F18BEF1002D9F5C /* IDPModel */ = {
@@ -272,6 +282,7 @@
 		566906741F13949E00A4980E /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				563FE3F51F1DF3A6000331B9 /* IDPViewController */,
 				569022B51F1CB42800FAB3BC /* IDPNavigationViewController */,
 				569022AE1F1CAFD300FAB3BC /* IDPFriendsViewController */,
 				569022A71F1CACAB00FAB3BC /* IDPLoginViewController */,
@@ -495,6 +506,7 @@
 				5642CE141F18A287002D9F5C /* UITableView+Extensions.swift in Sources */,
 				569022B11F1CAFD300FAB3BC /* IDPFriendsViewController.swift in Sources */,
 				5642CE171F18BEFB002D9F5C /* IDPModel.swift in Sources */,
+				563FE3F71F1DF3C8000331B9 /* IDPViewController.swift in Sources */,
 				5669066C1F138C2100A4980E /* AppDelegate.swift in Sources */,
 				561010991F17807C006C3273 /* IDPLoginContext.swift in Sources */,
 				561010A51F17964F006C3273 /* IDPFriendListContext.swift in Sources */,

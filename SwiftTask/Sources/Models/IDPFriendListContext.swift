@@ -10,22 +10,23 @@ import UIKit
 import FBSDKCoreKit
 
 class IDPFriendListContext: IDPBaseContext {
-    override func execute(object: AnyObject, completionHandler: @escaping CompletionHandler) {
+    override func execute(object: AnyObject) {
         let fbRequestFriends: FBSDKGraphRequest =
             FBSDKGraphRequest(
                 graphPath:"me/friends",
                 parameters:["fields": "id,name,gender,picture,friends.limit(100){picture,name}"]
         )
         
+        self.state = IDPContextState.willLoad.rawValue
+        
         fbRequestFriends.start { (connection, result, error) in
             if error == nil && result != nil {
                 self.fillFriendList(object: object, result: result)
-                completionHandler(true)
+                self.state = IDPContextState.didLoad.rawValue
             } else {
                 print("Error \(String(describing: error))")
             }
         }
-        
     }
     
     override func cancel() {

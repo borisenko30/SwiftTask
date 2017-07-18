@@ -10,12 +10,15 @@ import UIKit
 import FacebookLogin
 //import FacebookCore
 
-class IDPLoginViewController: UIViewController {
+class IDPLoginViewController: IDPViewController {
     @IBOutlet var loginView: IDPLoginView?
+    
+    var loginContext: IDPLoginContext?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        loginContext = IDPLoginContext()
+        self.observer = loginContext?.observationController(observer: self)
         self.initMainView()
     }
     
@@ -30,21 +33,17 @@ class IDPLoginViewController: UIViewController {
     }
     
     private func login() {
-        IDPLoginContext().execute(object: self) { _ in
-            let controller = IDPFriendsViewController()
-            controller.friends = IDPUsersModel()
-            
-            IDPFriendListContext().execute(object: controller) { (success: Bool) in
-                print("friendList received...")
-                
-                self.navigationController?.pushViewController(controller, animated: true)
-                
-                if success {
-                    //controller.mainView?.loading = false
-                } else {
-                    print("Error: can not login on FB")
-                }
-            }
+        loginContext?.execute(object: self)
+    }
+    
+    // MARK: IDPViewContorller override
+    override func prepare(observer: IDPObservationController?) {
+        let handler = {(controller: IDPObservationController, userInfo: Any?) -> Void in
+            let friendsViewController = IDPFriendsViewController()
+            friendsViewController.friends = IDPUsersModel()
+            self.navigationController?.pushViewController(friendsViewController, animated: true)
         }
+        
+        observer?.set(handler: handler, for: IDPContextState.didLoad.rawValue)
     }
 }

@@ -30,6 +30,7 @@ class IDPNavigationController: UINavigationController {
         self.observer = testObj.observationController(observer: self)
         
         testObj.state = IDPState.IDPStateDidChange.rawValue
+        testObj.state = IDPState.IDPStateDidChange.rawValue
         testObj.state = IDPState.IDPStateUnload.rawValue
         testObj.state = IDPState.IDPStateDidLoad.rawValue
         
