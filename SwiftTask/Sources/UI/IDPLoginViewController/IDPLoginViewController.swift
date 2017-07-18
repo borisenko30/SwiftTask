@@ -20,6 +20,16 @@ class IDPLoginViewController: UIViewController {
     }
     
     @IBAction func onLoginButtonTouch() {
+        self.login()
+    }
+    
+    private func initMainView() -> () {
+        if self.loginView == nil {
+            self.loginView = self.view as! IDPLoginView!
+        }
+    }
+    
+    private func login() {
         IDPLoginContext().execute(object: self) { _ in
             let controller = IDPFriendsViewController()
             controller.friends = IDPUsersModel()
@@ -30,17 +40,11 @@ class IDPLoginViewController: UIViewController {
                 self.navigationController?.pushViewController(controller, animated: true)
                 
                 if success {
-                    controller.mainView?.loading = false
+                    //controller.mainView?.loading = false
                 } else {
                     print("Error: can not login on FB")
                 }
             }
-        }
-    }
-    
-    private func initMainView() -> () {
-        if self.loginView == nil {
-            self.loginView = self.view as! IDPLoginView!
         }
     }
 }
