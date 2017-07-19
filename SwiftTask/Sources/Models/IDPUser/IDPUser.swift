@@ -8,9 +8,16 @@
 
 import UIKit
 
-class IDPUser: Comparable {
+class IDPUser: Comparable, NSCoding {
     let name: String
     let imageURL: URL
+    
+    let IDPUserName = "IDPUserName"
+    let IDPUrlName = "IDPUrlName"
+    
+    var imageModel: IDPImageModel? {
+        return IDPImageModel.model(with: imageURL)
+    }
     
     init(name: String, imageURL: URL) {
         self.name = name
@@ -25,6 +32,18 @@ class IDPUser: Comparable {
     
     static func == (lhs: IDPUser, rhs: IDPUser) -> Bool {
         return lhs === rhs
+    }
+    
+    // MARK: NSCoding methods
+    
+    required init?(coder aDecoder: NSCoder) {
+        self.name = aDecoder.decodeObject(forKey: IDPUserName) as! String
+        self.imageURL = aDecoder.decodeObject(forKey: IDPUrlName) as! URL
+    }
+    
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(self.name)
+        aCoder.encode(self.imageURL)
     }
 }
 

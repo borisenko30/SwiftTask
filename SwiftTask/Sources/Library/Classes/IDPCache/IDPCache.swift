@@ -12,7 +12,7 @@ class IDPCache {
     var models: NSMapTable<NSURL, IDPImageModel> = NSMapTable.strongToWeakObjects()
     static let sharedCache: IDPCache = IDPCache()
     
-    func set(model: IDPImageModel, url: URL) {
+    func set(model: IDPImageModel, for url: URL) {
         models.setObject(model, forKey: url as NSURL)
     }
     

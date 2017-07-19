@@ -9,18 +9,18 @@
 import UIKit
 
 class IDPUserCell: IDPTableViewCell {
-    @IBOutlet var userImageView: UIView?
+    @IBOutlet var userImageView: IDPImageView?
     @IBOutlet var nameLabel: UILabel?
 
     required init?(coder aDecoder: NSCoder) {
-        userImageView = UIView()
+        userImageView = IDPImageView()
         nameLabel = UILabel()
             
         super.init(coder: aDecoder)
     }
     
     public override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
-        userImageView = UIView()
+        userImageView = IDPImageView()
         nameLabel = UILabel()
         
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -34,6 +34,6 @@ class IDPUserCell: IDPTableViewCell {
     
     func fill(user: IDPUser?) {
         nameLabel?.text = user?.name
+        userImageView?.imageModel = user?.imageModel
     }
-    
 }

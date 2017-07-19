@@ -45,7 +45,7 @@ class IDPFriendListContext: IDPBaseContext {
                 let picture = wrappedPicture.value(forKey: "data") as! NSDictionary
                 let url = picture.value(forKey: "url") as! String
                 
-                let user: IDPUser = IDPUser(name: name, imageURL: URL(fileURLWithPath: url))
+                let user: IDPUser = IDPUser(name: name, imageURL: URL(string: url)!)
                 (object as! IDPFriendsViewController).friends?.add(object: user)
             }
         }

@@ -45,6 +45,12 @@ class IDPObservableObject: NSObject {
         self.observationControllers.remove(controller)
     }
     
+    func invalidateControllers() {
+        for controller in self.observationControllers.objectEnumerator() {
+            self.observationControllers.remove(controller as? IDPObservationController)
+        }
+    }
+    
     // notify methods
     func notify(state: Int, object: Any? = nil) {
         self.notify(state: state, handler: { (controller: IDPObservationController) in

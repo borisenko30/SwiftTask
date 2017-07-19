@@ -23,6 +23,7 @@ class IDPImageView: IDPLoadingViewContainer {
         didSet {
             if imageModel != oldValue {
                 self.contentImageView?.image = nil
+                oldValue?.invalidateControllers()
                 self.observer = imageModel?.observationController(observer: self)
                 imageModel?.load()
             }
@@ -35,6 +36,11 @@ class IDPImageView: IDPLoadingViewContainer {
                 self.prepare(observer: observer)
             }
         }
+    }
+    
+    deinit {
+        self.contentImageView = nil
+        self.imageModel = nil
     }
     
     override init(frame: CGRect) {
@@ -65,13 +71,13 @@ class IDPImageView: IDPLoadingViewContainer {
             self.imageModel?.load()
         }
         
-        observer?.set(handler: didFailHandler, for: IDPModelState.willLoad.rawValue)
+        observer?.set(handler: didFailHandler, for: IDPModelState.didFailLoading.rawValue)
         
         let didLoadHandler = {(controller: IDPObservationController, userInfo: Any?) -> Void in
             self.loading = false
             self.contentImageView?.image = (userInfo as? IDPImageModel)?.image
         }
         
-        observer?.set(handler: didLoadHandler, for: IDPModelState.willLoad.rawValue)
+        observer?.set(handler: didLoadHandler, for: IDPModelState.didLoad.rawValue)
     }
 }

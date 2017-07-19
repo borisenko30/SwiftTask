@@ -8,6 +8,8 @@
 
 import UIKit
 
+typealias IDPCompletionBlock = (_ image: UIImage?, _ error: Error?) -> Void
+
 class IDPImageModel: IDPModel {
     var image: UIImage?
     var url: URL?
@@ -24,8 +26,9 @@ class IDPImageModel: IDPModel {
             return model
         }
         
-        let model = IDPImageModel(url: url)
-        cache.set(model: model, url: url)
+        let model = url.isFileURL ? IDPFileSystemImageModel(url: url) : IDPInternetImageModel(url: url)
+        cache.set(model: model, for: url)
+        
         return model
     }
     
@@ -35,7 +38,23 @@ class IDPImageModel: IDPModel {
     }
     
     override func performLoading() {
-        
+        IDPGCD.dispatchAsyncInBackground {
+            self.load { (image, error) in
+                if error != nil {
+                    print(error!)
+                } else {
+                    IDPGCD.dispatchOnMainQueue {
+                        self.image = image
+                        //self.state = IDPModelState.willLoad.rawValue
+                        self.set(state: IDPModelState.didLoad.rawValue, for: self)
+                    }
+                }
+            }
+        }
     }
     
+    // should be overriden in subclasses
+    func load(_ completionBlock: @escaping IDPCompletionBlock) {
+        
+    }
 }

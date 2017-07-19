@@ -26,8 +26,8 @@ extension FileManager {
     
     // MARK: Class methods
     
-    class func fileExist(in path: String) -> Bool {
-        return self.default.fileExists(atPath: path)
+    class func fileExists(at url: URL) -> Bool {
+        return self.default.fileExists(atPath: url.path)
     }
     
     class func url(for directory: FileManager.SearchPathDirectory) -> URL {
