@@ -8,7 +8,7 @@
 
 import UIKit
 
-class IDPUser: Comparable, NSCoding {
+class IDPUser: Equatable, NSCoding {
     let name: String
     let imageURL: URL
     
@@ -24,11 +24,7 @@ class IDPUser: Comparable, NSCoding {
         self.imageURL = imageURL
     }
     
-    // MARK: Comparable methods
-    
-    static func < (lhs: IDPUser, rhs: IDPUser) -> Bool {
-        return false
-    }
+    // MARK: Equatable methods
     
     static func == (lhs: IDPUser, rhs: IDPUser) -> Bool {
         return lhs === rhs

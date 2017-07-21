@@ -76,6 +76,7 @@ class IDPImageView: IDPLoadingViewContainer {
         let didLoadHandler = {(controller: IDPObservationController, userInfo: Any?) -> Void in
             self.loading = false
             self.contentImageView?.image = (userInfo as? IDPImageModel)?.image
+            print("")
         }
         
         observer?.set(handler: didLoadHandler, for: IDPModelState.didLoad.rawValue)

@@ -10,9 +10,6 @@ import UIKit
 
 class IDPInternetImageModel: IDPFileSystemImageModel {
     var sessionTask = URLSessionDownloadTask() {
-        willSet {
-            sessionTask.cancel()
-        }
         didSet {
             sessionTask.resume()
         }

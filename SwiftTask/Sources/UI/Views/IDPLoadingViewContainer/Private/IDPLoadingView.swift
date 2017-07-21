@@ -13,7 +13,7 @@ class IDPLoadingView: UIView, IDPLoading {
 
     @IBOutlet var indicator: UIActivityIndicatorView?
     
-    var loading: Bool = true
+    var loading: Bool = false
     
     let IDPAnimationDuration = 1.0
     

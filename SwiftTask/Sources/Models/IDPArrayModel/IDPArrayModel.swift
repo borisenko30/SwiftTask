@@ -8,7 +8,7 @@
 
 import UIKit
 
-class IDPArrayModel<T:Comparable>: IDPModel {
+class IDPArrayModel<T:Equatable>: IDPModel {
     var objects: Array<T> = []
     var count: Int {
          return self.objects.count

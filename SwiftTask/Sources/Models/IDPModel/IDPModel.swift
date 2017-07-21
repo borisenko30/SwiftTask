@@ -15,7 +15,7 @@ enum IDPModelState: Int {
             willLoad
 }
 
-class IDPModel: IDPObservableObject, Comparable {
+class IDPModel: IDPObservableObject {
     func load() {
         self.performLoading()
     }
@@ -23,15 +23,5 @@ class IDPModel: IDPObservableObject, Comparable {
     // should be overriden in subclasses
     func performLoading() {
         
-    }
-    
-    // MARK: Comparable methods
-    
-    static func < (lhs: IDPModel, rhs: IDPModel) -> Bool {
-        return false
-    }
-    
-    static func == (lhs: IDPModel, rhs: IDPModel) -> Bool {
-        return lhs === rhs
     }
 }

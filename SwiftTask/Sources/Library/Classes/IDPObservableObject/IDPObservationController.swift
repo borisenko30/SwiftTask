@@ -10,7 +10,7 @@ import UIKit
 
 typealias IDPStateChangeHandler = (IDPObservationController, Any?) -> Void
 
-class IDPObservationController: Comparable {
+class IDPObservationController: Equatable {
     var observer: AnyObject?
     var observableObject: AnyObject?
     var states: Dictionary = [Int : Any]()
@@ -47,12 +47,9 @@ class IDPObservationController: Comparable {
         }
     }
     
-    // MARK: Comparable protocol
-    
-    static func < (lhs: IDPObservationController, rhs: IDPObservationController) -> Bool {
-        return false
-    }
-    
+    // MARK: -
+    // MARK: Equatable protocol
+
     static func == (lhs: IDPObservationController, rhs: IDPObservationController) -> Bool {
         return lhs === rhs
     }
