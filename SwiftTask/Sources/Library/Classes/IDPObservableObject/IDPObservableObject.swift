@@ -53,9 +53,12 @@ class IDPObservableObject: NSObject {
     
     // notify methods
     func notify(state: Int, object: Any? = nil) {
-        self.notify(state: state, handler: { (controller: IDPObservationController) in
-            controller.notify(state: state, object: object)
-        } as? IDPControllerNotificationBlock)
+        let handler: IDPControllerNotificationBlock = {
+            (controller: IDPObservationController?) in
+            controller?.notify(state: state, object: object)
+        }
+        
+        self.notify(state: state, handler: handler)
     }
     
     func notify(state: Int, handler: IDPControllerNotificationBlock?) {
