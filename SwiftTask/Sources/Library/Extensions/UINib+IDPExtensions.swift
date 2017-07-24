@@ -40,8 +40,8 @@ extension UINib {
     }
     
     func object<Object>(className: Object.Type, owner: Any?, options: [AnyHashable : Any]?) -> Object? {
-        let result: Array = self.instantiate(withOwner: owner, options: options) as! [Object]
+        let result: Array? = self.instantiate(withOwner: owner, options: options) as? [Object]
         
-        return result.object(type:className)
+        return result?.object(type:className)
     }
 }

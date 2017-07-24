@@ -8,7 +8,7 @@
 
 import UIKit
 
-typealias IDPControllerNotificationBlock = (IDPObservationController) -> Void
+typealias IDPControllerNotificationBlock = (IDPObservationController?) -> Void
 
 class IDPObservableObject: NSObject {
     var observationControllers: NSHashTable<IDPObservationController> = NSHashTable.weakObjects()
@@ -55,7 +55,7 @@ class IDPObservableObject: NSObject {
     func notify(state: Int, object: Any? = nil) {
         self.notify(state: state, handler: { (controller: IDPObservationController) in
             controller.notify(state: state, object: object)
-        })
+        } as? IDPControllerNotificationBlock)
     }
     
     func notify(state: Int, handler: IDPControllerNotificationBlock?) {
@@ -65,7 +65,7 @@ class IDPObservableObject: NSObject {
         
         IDPGCD.synchronize(self) {
             for controller in self.observationControllers.objectEnumerator() {
-                handler?(controller as! IDPObservationController)
+                handler?(controller as? IDPObservationController)
             }
         }
     }

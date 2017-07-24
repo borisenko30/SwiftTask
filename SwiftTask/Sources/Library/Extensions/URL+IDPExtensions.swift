@@ -12,7 +12,7 @@ extension URL {
     func fileSystemURL() -> URL? {
         let fileName = self.relativePath.addingPercentEncoding(withAllowedCharacters: .alphanumerics)
         
-        let path = String(format: "%@/%@%@", FileManager.libraryFolderURL.path, self.host!, fileName!)
+        let path = String(format: "%@/%@%@", FileManager.libraryFolderURL.path, self.host ?? "", fileName!)
         
         return URL(fileURLWithPath: path)
     }

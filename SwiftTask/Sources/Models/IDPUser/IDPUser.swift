@@ -8,7 +8,7 @@
 
 import UIKit
 
-class IDPUser: Equatable, NSCoding {
+class IDPUser: NSObject, NSCoding {
     let name: String
     let imageURL: URL
     
@@ -22,12 +22,6 @@ class IDPUser: Equatable, NSCoding {
     init(name: String, imageURL: URL) {
         self.name = name
         self.imageURL = imageURL
-    }
-    
-    // MARK: Equatable methods
-    
-    static func == (lhs: IDPUser, rhs: IDPUser) -> Bool {
-        return lhs === rhs
     }
     
     // MARK: NSCoding methods
