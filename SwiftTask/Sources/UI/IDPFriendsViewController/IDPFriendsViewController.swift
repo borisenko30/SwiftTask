@@ -27,7 +27,7 @@ class IDPFriendsViewController: IDPViewController, UITableViewDataSource, UITabl
     
     private func initMainView() -> () {
         if self.mainView == nil {
-            self.mainView = self.view as! IDPFriendsView!
+            self.mainView = self.view as? IDPFriendsView
         }
     }
     

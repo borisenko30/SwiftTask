@@ -8,10 +8,6 @@
 
 import UIKit
 
-func cast<Value, Result>(_ value: Value) -> Result? {
-    return value as? Result
-}
-
 extension UITableView {
     func dequeueReusableCell<Result: UITableViewCell>(
         cellClass: Result.Type,

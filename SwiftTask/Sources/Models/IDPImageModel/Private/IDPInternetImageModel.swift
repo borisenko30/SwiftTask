@@ -16,7 +16,9 @@ class IDPInternetImageModel: IDPFileSystemImageModel {
     }
     
     override func load(_ completionBlock: @escaping IDPCompletionBlock) {
-        if self.isCached() {
+        let cached: Bool = self.isCached() ?? false
+        
+        if cached {
             super.load({ (image: UIImage?, error: Error?) in
                 if (image != nil) {
                     completionBlock(image, error)
@@ -44,17 +46,17 @@ class IDPInternetImageModel: IDPFileSystemImageModel {
                                         }
                                     
                                         let image = UIImage(contentsOfFile: (self.localURL?.path)!)
-                                        completionBlock(image!, error)
+                                        completionBlock(image, error)
                                     })
     }
     
-    private func isCached() -> Bool {
-        return FileManager.fileExists(at: self.localURL!)
+    private func isCached() -> Bool? {
+        return cast(self.localURL.map(FileManager.fileExists(at:)))
     }
     
     private func removeCachedFile() {
         do {
-            try FileManager.default.removeItem(at: self.localURL!)
+            try self.localURL.map(FileManager.default.removeItem(at:))
         } catch {
             print("Error occured while removing cached file...")
         }

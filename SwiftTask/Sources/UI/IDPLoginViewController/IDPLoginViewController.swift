@@ -28,7 +28,7 @@ class IDPLoginViewController: IDPViewController {
     
     private func initMainView() -> () {
         if self.loginView == nil {
-            self.loginView = self.view as! IDPLoginView!
+            self.loginView = self.view as? IDPLoginView
         }
     }
     

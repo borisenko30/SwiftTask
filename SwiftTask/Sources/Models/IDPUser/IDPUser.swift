@@ -9,14 +9,14 @@
 import UIKit
 
 class IDPUser: NSObject, NSCoding {
-    let name: String
-    let imageURL: URL
+    let name: String?
+    let imageURL: URL?
     
     let IDPUserName = "IDPUserName"
     let IDPUrlName = "IDPUrlName"
     
     var imageModel: IDPImageModel? {
-        return IDPImageModel.model(with: imageURL)
+        return imageURL.map(IDPImageModel.model(with:))
     }
     
     init(name: String, imageURL: URL) {
@@ -27,8 +27,8 @@ class IDPUser: NSObject, NSCoding {
     // MARK: NSCoding methods
     
     required init?(coder aDecoder: NSCoder) {
-        self.name = aDecoder.decodeObject(forKey: IDPUserName) as! String
-        self.imageURL = aDecoder.decodeObject(forKey: IDPUrlName) as! URL
+        self.name = aDecoder.decodeObject(forKey: IDPUserName) as? String
+        self.imageURL = aDecoder.decodeObject(forKey: IDPUrlName) as? URL
     }
     
     func encode(with aCoder: NSCoder) {

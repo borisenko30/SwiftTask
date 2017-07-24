@@ -11,6 +11,4 @@ import UIKit
 class IDPUsersModel: IDPArrayModel<IDPUser> {
     let IDPFileName = "usersModel.plist"
     let IDPUsersCount = 10
-    
-    
 }
