@@ -49,5 +49,9 @@ class IDPFriendListContext: IDPBaseContext {
                 (object as! IDPFriendsViewController).friends?.add(object: user)
             }
         }
+//        let dictionary: Dictionary<String, Any>? = cast(result)
+//        let friends: Array<NSDictionary>? = cast(dictionary?["data"])
+//        dictionary.map{$0}
+        
     }
 }

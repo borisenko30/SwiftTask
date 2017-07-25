@@ -9,37 +9,66 @@
 
 import UIKit
 
-class IDPLoadingView: UIView, IDPLoading {
+typealias AnimationCompletionHandler = (( _ success: Bool) -> Void)?
 
-    @IBOutlet var indicator: UIActivityIndicatorView?
+fileprivate struct Animation {
+    static let duration = TimeInterval(1.0)
+    static let alpha = 1.0
+}
+
+protocol LoadingView: class {
+    var isLoading: Bool { get set }
+    func set(loading: Bool, animated: Bool, completionHandler: AnimationCompletionHandler)
+}
+
+extension LoadingView {
     
-    var loading: Bool = false
-    
-    let IDPAnimationDuration = 1.0
-    
-    class func loadingView(superView: UIView) -> IDPLoadingView {
-        let loadingView: IDPLoadingView = UINib.object(className: IDPLoadingView.self)!
-        loadingView.frame = superView.bounds
-        superView.addSubview(loadingView)
-        loadingView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        
-        return loadingView
+    func set(loading: Bool, animated: Bool) {
+        self.set(loading: loading, animated: animated, completionHandler: nil)
     }
     
-    // MARK: IDPLoading protocol
+    // Function for overriding
+    func set(loading: Bool, animated: Bool, completionHandler: AnimationCompletionHandler) {
+        
+    }
+}
+
+protocol AlphaLoadingView: LoadingView { }
+
+extension AlphaLoadingView
+    where Self: UIView
+{
+    var isLoading: Bool {
+        get { return self.alpha > 0 }
+        set { self.set(loading: newValue, animated: true) }
+    }
     
-    func set(loading: Bool, animations: (() -> Void)? = nil, completionHandler: ((Bool) -> Void)? = nil) {
-        if animations == nil {
-            self.loading = loading
-        } else {
-            UIView.animate(withDuration: IDPAnimationDuration,
-                           animations: animations!,
-                           completion: { (finished: Bool) -> Void in
-                                self.loading = loading
-                                if completionHandler != nil {
-                                    completionHandler!(finished)
-                                }
-                            })
+    func set(loading: Bool, animated: Bool, completionHandler: AnimationCompletionHandler) {
+        if loading != self.isLoading {
+            UIView.animate(
+                withDuration: animated ? Animation.duration : 0,
+                animations: { self.alpha = CGFloat(loading ? Animation.alpha : 0) },
+                completion: completionHandler
+            )
         }
+    }
+}
+
+protocol ComposableLoadingView: LoadingView {
+    
+    associatedtype LoadingViewType: UIView, LoadingView
+    
+    var loadingView: LoadingViewType? { get set }
+}
+
+extension ComposableLoadingView {
+    var isLoading: Bool {
+        get {
+            var loading = false
+            self.loadingView.do { view in loading = view.isLoading }
+            
+            return loading
+        }
+        set { self.loadingView?.isLoading = newValue }
     }
 }

@@ -16,7 +16,7 @@ extension UITableView {
         -> UITableViewCell
     {
         let identifier = String(describing: cellClass)
-        self.register(UINib.nib(className: cellClass), forCellReuseIdentifier: identifier)
+        self.register(UINib.nib(cellClass), forCellReuseIdentifier: identifier)
         
         return self.dequeueReusableCell(withIdentifier: identifier, for: indexPath)
     }

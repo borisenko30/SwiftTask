@@ -62,7 +62,7 @@ class IDPImageView: IDPLoadingViewContainer {
     
     func prepare(observer: IDPObservationController?) {
         let willLoadHandler = {(controller: IDPObservationController, userInfo: Any?) -> Void in
-            self.loading = true
+            self.isLoading = true
         }
         
         observer?.set(handler: willLoadHandler, for: IDPModelState.willLoad.rawValue)
@@ -74,7 +74,7 @@ class IDPImageView: IDPLoadingViewContainer {
         observer?.set(handler: didFailHandler, for: IDPModelState.didFailLoading.rawValue)
         
         let didLoadHandler = {(controller: IDPObservationController, userInfo: Any?) -> Void in
-            self.loading = false
+            self.isLoading = false
             self.contentImageView?.image = (userInfo as? IDPImageModel)?.image
             print("")
         }

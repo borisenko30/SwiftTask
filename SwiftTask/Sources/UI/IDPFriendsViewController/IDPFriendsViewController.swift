@@ -25,12 +25,7 @@ class IDPFriendsViewController: IDPViewController, UITableViewDataSource, UITabl
         self.initMainView()
     }
     
-    private func initMainView() -> () {
-        if self.mainView == nil {
-            self.mainView = self.view as? IDPFriendsView
-        }
-    }
-    
+    // MARK -
     // MARK: UITableViewDataSource
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -45,6 +40,11 @@ class IDPFriendsViewController: IDPViewController, UITableViewDataSource, UITabl
         return cell;
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.showFriendInfo(at: indexPath)
+    }
+    
+    // MARK -
     // MARK: UITableViewDelegate
     
     @nonobjc public func tableView(_ tableView: UITableView, didEndDisplaying cell: IDPUserCell, forRowAt indexPath: IndexPath)
@@ -52,13 +52,38 @@ class IDPFriendsViewController: IDPViewController, UITableViewDataSource, UITabl
         cell.user = nil
     }
     
+    // MARK -
     // MARK: IDPViewContorller override
+    
     override func prepare(observer: IDPObservationController?) {
-        let handler = {(controller: IDPObservationController, userInfo: Any?) -> Void in
-            self.mainView?.loading = false
+        let willLoadHandler = {(controller: IDPObservationController, userInfo: Any?) -> Void in
+            self.mainView?.isLoading = true
+        }
+        
+        observer?.set(handler: willLoadHandler, for: IDPContextState.willLoad.rawValue)
+        
+        let didLoadHandler = {(controller: IDPObservationController, userInfo: Any?) -> Void in
+            self.mainView?.isLoading = false
             self.tableView?.reloadData()
         }
         
-        observer?.set(handler: handler, for: IDPContextState.didLoad.rawValue)
+        observer?.set(handler: didLoadHandler, for: IDPContextState.didLoad.rawValue)
+    }
+    
+    // MARK -
+    // MARK Private
+    
+    private func initMainView() -> () {
+        if self.mainView == nil {
+            self.mainView = self.view as? IDPFriendsView
+        }
+    }
+    
+    private func showFriendInfo(at indexPath: IndexPath) -> () {
+        let controller = FriendsDetailViewController.viewController()
+        controller.user = self.friends?[indexPath.row]
+        
+        self.navigationController?.pushViewController(controller, animated: true)
+        FriendInfoContext().execute(object: controller)
     }
 }

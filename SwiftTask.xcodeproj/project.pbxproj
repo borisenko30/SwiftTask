@@ -33,7 +33,13 @@
 		5642CE1F1F18F20E002D9F5C /* IDPUsersModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5642CE1E1F18F20E002D9F5C /* IDPUsersModel.swift */; };
 		5642CE261F191060002D9F5C /* IDPLoadingViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5642CE251F191060002D9F5C /* IDPLoadingViewContainer.swift */; };
 		5642CE281F1910BE002D9F5C /* IDPLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5642CE271F1910BE002D9F5C /* IDPLoadingView.swift */; };
-		5642CE2A1F1910D3002D9F5C /* IDPLoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5642CE291F1910D3002D9F5C /* IDPLoadingView.xib */; };
+		5642CE2A1F1910D3002D9F5C /* ActivityIndicatorLoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5642CE291F1910D3002D9F5C /* ActivityIndicatorLoadingView.xib */; };
+		56449E9E1F272CE700CC092D /* ActivityIndicatorLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56449E9D1F272CE700CC092D /* ActivityIndicatorLoadingView.swift */; };
+		5661B7E51F2631B50007C7B5 /* FriendsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5661B7E31F2631B50007C7B5 /* FriendsDetailViewController.swift */; };
+		5661B7E61F2631B50007C7B5 /* FriendsDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5661B7E41F2631B50007C7B5 /* FriendsDetailViewController.xib */; };
+		5661B7E81F2631D80007C7B5 /* FriendsDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5661B7E71F2631D80007C7B5 /* FriendsDetailView.swift */; };
+		5661B7EA1F2634940007C7B5 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5661B7E91F2634940007C7B5 /* UIView+Extensions.swift */; };
+		5661B7EC1F2635CC0007C7B5 /* FriendInfoContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5661B7EB1F2635CC0007C7B5 /* FriendInfoContext.swift */; };
 		5669066C1F138C2100A4980E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566906621F138C2100A4980E /* AppDelegate.swift */; };
 		5669066D1F138C2100A4980E /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 566906631F138C2100A4980E /* Info.plist */; };
 		5669066F1F138C2100A4980E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 566906661F138C2100A4980E /* Assets.xcassets */; };
@@ -78,7 +84,13 @@
 		5642CE1E1F18F20E002D9F5C /* IDPUsersModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IDPUsersModel.swift; sourceTree = "<group>"; };
 		5642CE251F191060002D9F5C /* IDPLoadingViewContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IDPLoadingViewContainer.swift; sourceTree = "<group>"; };
 		5642CE271F1910BE002D9F5C /* IDPLoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IDPLoadingView.swift; sourceTree = "<group>"; };
-		5642CE291F1910D3002D9F5C /* IDPLoadingView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IDPLoadingView.xib; sourceTree = "<group>"; };
+		5642CE291F1910D3002D9F5C /* ActivityIndicatorLoadingView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActivityIndicatorLoadingView.xib; sourceTree = "<group>"; };
+		56449E9D1F272CE700CC092D /* ActivityIndicatorLoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorLoadingView.swift; sourceTree = "<group>"; };
+		5661B7E31F2631B50007C7B5 /* FriendsDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsDetailViewController.swift; sourceTree = "<group>"; };
+		5661B7E41F2631B50007C7B5 /* FriendsDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FriendsDetailViewController.xib; sourceTree = "<group>"; };
+		5661B7E71F2631D80007C7B5 /* FriendsDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsDetailView.swift; sourceTree = "<group>"; };
+		5661B7E91F2634940007C7B5 /* UIView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
+		5661B7EB1F2635CC0007C7B5 /* FriendInfoContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendInfoContext.swift; sourceTree = "<group>"; };
 		5669064B1F1382A400A4980E /* SwiftTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		566906621F138C2100A4980E /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		566906631F138C2100A4980E /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -152,6 +164,7 @@
 				5642CE1B1F18D521002D9F5C /* Optional+IDPExtensions.swift */,
 				563FE4071F1E0042000331B9 /* URL+IDPExtensions.swift */,
 				563FE4091F1E00A0000331B9 /* FileManager+IDPExtensions.swift */,
+				5661B7E91F2634940007C7B5 /* UIView+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -272,9 +285,20 @@
 			isa = PBXGroup;
 			children = (
 				5642CE271F1910BE002D9F5C /* IDPLoadingView.swift */,
-				5642CE291F1910D3002D9F5C /* IDPLoadingView.xib */,
+				5642CE291F1910D3002D9F5C /* ActivityIndicatorLoadingView.xib */,
+				56449E9D1F272CE700CC092D /* ActivityIndicatorLoadingView.swift */,
 			);
 			path = Private;
+			sourceTree = "<group>";
+		};
+		5661B7E21F2630640007C7B5 /* FriendsDetailViewController */ = {
+			isa = PBXGroup;
+			children = (
+				5661B7E31F2631B50007C7B5 /* FriendsDetailViewController.swift */,
+				5661B7E41F2631B50007C7B5 /* FriendsDetailViewController.xib */,
+				5661B7E71F2631D80007C7B5 /* FriendsDetailView.swift */,
+			);
+			path = FriendsDetailViewController;
 			sourceTree = "<group>";
 		};
 		566906421F1382A400A4980E = {
@@ -354,6 +378,7 @@
 				561010941F177EF3006C3273 /* IDPBaseContext.swift */,
 				561010981F17807C006C3273 /* IDPLoginContext.swift */,
 				561010A41F17964F006C3273 /* IDPFriendListContext.swift */,
+				5661B7EB1F2635CC0007C7B5 /* FriendInfoContext.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -361,6 +386,7 @@
 		566906741F13949E00A4980E /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				5661B7E21F2630640007C7B5 /* FriendsDetailViewController */,
 				563FE3F51F1DF3A6000331B9 /* IDPViewController */,
 				569022B51F1CB42800FAB3BC /* IDPNavigationViewController */,
 				569022AE1F1CAFD300FAB3BC /* IDPFriendsViewController */,
@@ -482,7 +508,8 @@
 				561010AA1F179BF9006C3273 /* IDPUserCell.xib in Resources */,
 				5669066F1F138C2100A4980E /* Assets.xcassets in Resources */,
 				569022AB1F1CACAB00FAB3BC /* IDPLoginViewController.xib in Resources */,
-				5642CE2A1F1910D3002D9F5C /* IDPLoadingView.xib in Resources */,
+				5661B7E61F2631B50007C7B5 /* FriendsDetailViewController.xib in Resources */,
+				5642CE2A1F1910D3002D9F5C /* ActivityIndicatorLoadingView.xib in Resources */,
 				5669066D1F138C2100A4980E /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -557,19 +584,24 @@
 				563FE40A1F1E00A0000331B9 /* FileManager+IDPExtensions.swift in Sources */,
 				5642CE1C1F18D521002D9F5C /* Optional+IDPExtensions.swift in Sources */,
 				561010B01F17AB83006C3273 /* IDPUser.swift in Sources */,
+				5661B7EC1F2635CC0007C7B5 /* FriendInfoContext.swift in Sources */,
 				563EF2941F1F3FA600241810 /* IDPFileSystemImageModel.swift in Sources */,
 				569022B41F1CAFEB00FAB3BC /* IDPFriendsView.swift in Sources */,
 				5642CE1A1F18C089002D9F5C /* IDPArrayModel.swift in Sources */,
 				563FE3FF1F1DF791000331B9 /* IDPObservationController.swift in Sources */,
+				5661B7E51F2631B50007C7B5 /* FriendsDetailViewController.swift in Sources */,
 				5642CE141F18A287002D9F5C /* UITableView+Extensions.swift in Sources */,
 				569022B11F1CAFD300FAB3BC /* IDPFriendsViewController.swift in Sources */,
 				5642CE171F18BEFB002D9F5C /* IDPModel.swift in Sources */,
+				56449E9E1F272CE700CC092D /* ActivityIndicatorLoadingView.swift in Sources */,
+				5661B7E81F2631D80007C7B5 /* FriendsDetailView.swift in Sources */,
 				563FE3F71F1DF3C8000331B9 /* IDPViewController.swift in Sources */,
 				5669066C1F138C2100A4980E /* AppDelegate.swift in Sources */,
 				561010991F17807C006C3273 /* IDPLoginContext.swift in Sources */,
 				561010A51F17964F006C3273 /* IDPFriendListContext.swift in Sources */,
 				561010B61F17B234006C3273 /* Array+IDPExtensions.swift in Sources */,
 				569022B71F1CB42800FAB3BC /* IDPNavigationController.swift in Sources */,
+				5661B7EA1F2634940007C7B5 /* UIView+Extensions.swift in Sources */,
 				563FE3FE1F1DF791000331B9 /* IDPObservableObject.swift in Sources */,
 				563FE40F1F1E2E62000331B9 /* IDPGCD.swift in Sources */,
 				563FE4031F1DF7F7000331B9 /* IDPCache.swift in Sources */,

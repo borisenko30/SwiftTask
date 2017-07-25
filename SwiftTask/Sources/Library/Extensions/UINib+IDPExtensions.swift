@@ -9,7 +9,7 @@
 import UIKit
 
 extension UINib {
-    static func nib<Object>(className: Object.Type) -> UINib {
+    static func nib<Object>(_ className: Object.Type) -> UINib {
         return self.nib(className: className, bundle: nil)
     }
     
@@ -31,7 +31,7 @@ extension UINib {
         return nib.object(className: className, owner:owner, options:options)
     }
     
-    func object<Object>(className: Object.Type) -> Object? {
+    func object<Object>(_ className: Object.Type) -> Object? {
         return self.object(className: className, owner: nil)
     }
     
