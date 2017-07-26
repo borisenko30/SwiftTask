@@ -8,8 +8,10 @@
 
 import UIKit
 
-class FriendsDetailView: UIView {
+class FriendsDetailView: IDPLoadingViewContainer {
     @IBOutlet var nameLabel: UILabel?
+    @IBOutlet var birthdayLabel: UILabel?
+    @IBOutlet var aboutLabel: UILabel?
     @IBOutlet var userImageView: IDPImageView?
     
     required init?(coder aDecoder: NSCoder) {
@@ -27,6 +29,8 @@ class FriendsDetailView: UIView {
     
     func fill(user: IDPUser?) {
         nameLabel?.text = user?.name
+        birthdayLabel?.text = user?.birthday
+        aboutLabel?.text = user?.about
         userImageView?.imageModel = user?.imageModel
     }
 

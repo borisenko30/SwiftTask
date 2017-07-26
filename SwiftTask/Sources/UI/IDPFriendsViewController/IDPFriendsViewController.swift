@@ -19,7 +19,8 @@ class IDPFriendsViewController: IDPViewController, UITableViewDataSource, UITabl
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        friendListContext = IDPFriendListContext()
+        friendListContext = IDPFriendListContext(with: "me/friends",
+                                                 ["fields": "id,name,gender,picture,friends.limit(100){picture,name}"])
         self.observer = friendListContext?.observationController(observer: self)
         friendListContext?.execute(object: self)
         self.initMainView()
@@ -81,9 +82,9 @@ class IDPFriendsViewController: IDPViewController, UITableViewDataSource, UITabl
     
     private func showFriendInfo(at indexPath: IndexPath) -> () {
         let controller = FriendsDetailViewController.viewController()
-        controller.user = self.friends?[indexPath.row]
+        let user = self.friends?[indexPath.row]
+        controller.user = user
         
         self.navigationController?.pushViewController(controller, animated: true)
-        FriendInfoContext().execute(object: controller)
     }
 }

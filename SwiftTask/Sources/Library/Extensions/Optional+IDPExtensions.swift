@@ -13,7 +13,7 @@ extension Optional {
         self.map(execute)
     }
     
-    func apply<Result>(_ function: ((Wrapped) -> Result)?) throws -> Result? {
+    func apply<Result>(_ function: ((Wrapped) -> Result)?) -> Result? {
         return function.flatMap{function in
             self.flatMap(function)
         }
@@ -58,5 +58,16 @@ func weakify<Value: AnyObject, Arguments>(
 func curry<A, B, C>(_ function: @escaping (A, B) -> C) -> (A) -> (B) -> C {
     return { arg in
         { return function(arg, $0) }
+    }
+}
+
+func curry<A, B, C, D>(_ function : @escaping (A, B, C) -> D) -> (A) -> (B) -> (C) -> D {
+    
+    return { (a : A) -> (B) -> (C) -> D in
+        { (b : B) -> (C) -> D in
+            { (c : C) -> D in
+                function(a, b, c)
+            }
+        }
     }
 }

@@ -9,49 +9,38 @@
 import UIKit
 import FBSDKCoreKit
 
-class IDPFriendListContext: IDPBaseContext {
+class IDPFriendListContext: FacebookContext {
+    
+    private var model: IDPUsersModel?
+    
     override func execute(object: AnyObject) {
-        let fbRequestFriends: FBSDKGraphRequest =
-            FBSDKGraphRequest(
-                graphPath:"me/friends",
-                parameters:["fields": "id,name,gender,picture,friends.limit(100){picture,name}"]
-        )
-        
+        self.model = (object as! IDPFriendsViewController).friends
         self.state = IDPContextState.willLoad.rawValue
-        
-        fbRequestFriends.start { (connection, result, error) in
-            if error == nil && result != nil {
-                self.fillFriendList(object: object, result: result)
-                self.state = IDPContextState.didLoad.rawValue
-            } else {
-                print("Error \(String(describing: error))")
-            }
-        }
+        super.execute(object: object)
     }
     
-    override func cancel() {
+    override func processData(_ data: Any?) {
+        let curriedInitUser = curry(IDPUser.init(id:name:imageURL:))
         
-    }
-    
-    
-    func fillFriendList(object: AnyObject, result:Any?) {
-        let dictionary = result as! NSDictionary
-        let friends = dictionary.value(forKey: "data") as! NSArray
+        let dictionary: Dictionary<String, Any>? = cast(data)
+        let friends: Array<NSDictionary>? = cast(dictionary?["data"])
 
-        if let array = friends as? [NSDictionary] {
-            for friend : NSDictionary in array {
-                let name = friend.value(forKey: "name") as! String
-                let wrappedPicture = friend.value(forKey: "picture") as! NSDictionary
-                let picture = wrappedPicture.value(forKey: "data") as! NSDictionary
-                let url = picture.value(forKey: "url") as! String
+        friends.map {
+            $0.map { user in
+                let id: String? = cast(user["id"])
+                let name: String? = cast(user["name"])
+                let pictureURL = ((user["picture"]
+                                    as? Dictionary<String, Any>)?["data"]
+                                    as? Dictionary<String, Any>)?["url"]
+                                    as? String ?? ""
                 
-                let user: IDPUser = IDPUser(name: name, imageURL: URL(string: url)!)
-                (object as! IDPFriendsViewController).friends?.add(object: user)
+                let url:URL? = URL(string: pictureURL)
+                let newUser = url.apply(name.apply(id.apply(curriedInitUser)))
+                
+                newUser.apply(self.model?.add(object:))
             }
         }
-//        let dictionary: Dictionary<String, Any>? = cast(result)
-//        let friends: Array<NSDictionary>? = cast(dictionary?["data"])
-//        dictionary.map{$0}
         
+        self.state = IDPContextState.didLoad.rawValue
     }
 }
