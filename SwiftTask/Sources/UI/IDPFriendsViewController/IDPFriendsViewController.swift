@@ -20,7 +20,7 @@ class IDPFriendsViewController: IDPViewController, UITableViewDataSource, UITabl
     override func viewDidLoad() {
         super.viewDidLoad()
         friendListContext = IDPFriendListContext(with: "me/friends",
-                                                 ["fields": "id,name,gender,picture,friends.limit(100){picture,name}"])
+                                                 ["fields": "id,name,picture"])
         self.observer = friendListContext?.observationController(observer: self)
         friendListContext?.execute(object: self)
         self.initMainView()

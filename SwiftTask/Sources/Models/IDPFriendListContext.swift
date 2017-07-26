@@ -20,13 +20,13 @@ class IDPFriendListContext: FacebookContext {
     }
     
     override func processData(_ data: Any?) {
-        let curriedInitUser = curry(IDPUser.init(id:name:imageURL:))
+        let curriedInit = curry(IDPUser.init(id:name:imageURL:))
         
         let dictionary: Dictionary<String, Any>? = cast(data)
         let friends: Array<NSDictionary>? = cast(dictionary?["data"])
 
-        friends.map {
-            $0.map { user in
+        friends.flatMap {
+            $0.flatMap { user -> IDPUser? in
                 let id: String? = cast(user["id"])
                 let name: String? = cast(user["name"])
                 let pictureURL = ((user["picture"]
@@ -35,11 +35,10 @@ class IDPFriendListContext: FacebookContext {
                                     as? String ?? ""
                 
                 let url:URL? = URL(string: pictureURL)
-                let newUser = url.apply(name.apply(id.apply(curriedInitUser)))
                 
-                newUser.apply(self.model?.add(object:))
+                return url.apply(name.apply(id.apply(curriedInit)))
             }
-        }
+        }.do { self.model?.add(objects: $0) }
         
         self.state = IDPContextState.didLoad.rawValue
     }
