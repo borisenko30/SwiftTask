@@ -15,7 +15,7 @@ class IDPFriendListContext: FacebookContext {
     
     override func execute(object: AnyObject) {
         self.model = (object as! IDPFriendsViewController).friends
-        self.state = IDPContextState.willLoad.rawValue
+        //self.state = IDPContextState.willLoad
         super.execute(object: object)
     }
     
@@ -40,6 +40,6 @@ class IDPFriendListContext: FacebookContext {
             }
         }.do { self.model?.add(objects: $0) }
         
-        self.state = IDPContextState.didLoad.rawValue
+        self.state = IDPContextState.didLoad
     }
 }

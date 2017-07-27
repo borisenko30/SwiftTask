@@ -13,7 +13,7 @@ class FriendInfoContext: FacebookContext {
     
     override func execute(object: AnyObject) {
         self.controller = object as? FriendsDetailViewController
-        self.state = IDPContextState.willLoad.rawValue
+        //self.state = IDPContextState.willLoad
         super.execute(object: object)
     }
     
@@ -37,6 +37,6 @@ class FriendInfoContext: FacebookContext {
         
         self.controller?.mainView?.user = user
         
-        self.state = IDPContextState.didLoad.rawValue
+        self.state = IDPContextState.didLoad
     }
 }

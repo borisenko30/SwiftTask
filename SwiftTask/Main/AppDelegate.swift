@@ -21,7 +21,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         self.window = window
         
-        window.rootViewController = IDPNavigationController()
+        let controller =  UINavigationController.viewController()
+        let loginViewController =  IDPLoginViewController.viewController()
+        controller.setViewControllers([loginViewController], animated: true)
+        
+        window.rootViewController = controller
         
         window.backgroundColor = UIColor.white
         

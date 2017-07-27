@@ -22,9 +22,7 @@ extension Optional {
     func apply<Value, Result>(_ value: Value?) -> Result?
         where Wrapped == (Value) -> Result
     {
-        return self.flatMap { function in
-            value.flatMap(function)
-        }
+        return self.apply(value)
     }
     
     
@@ -38,7 +36,7 @@ func weakify<Value: AnyObject, Arguments, Result>(
     _ function: @escaping (Value) -> (Arguments) -> Result,
     object: Value,
     default value: Result
-    )
+)
     -> (Arguments) -> Result
 {
     return { [weak object] arguments in
@@ -49,7 +47,7 @@ func weakify<Value: AnyObject, Arguments, Result>(
 func weakify<Value: AnyObject, Arguments>(
     _ function: @escaping (Value) -> (Arguments) -> (),
     object: Value
-    )
+)
     -> (Arguments) -> ()
 {
     return weakify(function, object: object, default: ())

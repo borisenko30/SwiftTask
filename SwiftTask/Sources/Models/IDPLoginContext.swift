@@ -13,7 +13,7 @@ import FacebookCore
 class IDPLoginContext: IDPBaseContext {
     override func execute(object: AnyObject) {
         let loginManager = LoginManager()
-        self.state = IDPContextState.willLoad.rawValue
+        //self.state = IDPContextState.willLoad
         
         loginManager.logIn([ .publicProfile ], viewController: object as? UIViewController) { loginResult in
             switch loginResult {
@@ -23,7 +23,7 @@ class IDPLoginContext: IDPBaseContext {
                 print("User cancelled login.")
             case .success:
                 print("logged in...");
-                self.state = IDPContextState.didLoad.rawValue
+                self.state = IDPContextState.didLoad
             }
         }
     }

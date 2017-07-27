@@ -12,7 +12,11 @@ enum IDPContextState: Int {
     case didUnload, didLoad, didFailLoading, willLoad
 }
 
-class IDPBaseContext: IDPObservableObject {
+class IDPBaseContext: IDPObservableObject<IDPContextState> {
+    
+    init() {
+        super.init(with: IDPContextState.willLoad)
+    }
     
     func execute(object: AnyObject) {
         

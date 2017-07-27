@@ -8,42 +8,33 @@
 
 import UIKit
 
-typealias IDPStateChangeHandler = (IDPObservationController, Any?) -> Void
-
-class IDPObservationController: NSObject {
-    var observer: AnyObject?
-    var observableObject: AnyObject?
-    var states: Dictionary = [Int : Any]()
+class IDPObservationController<ObservableObject, State>: NSObject
+    where
+    ObservableObject: IDPObservableObject<State>,
+    State: Hashable
+{
+    // MARK: -
+    // MARK: Subtypes
     
-    init(observer: AnyObject, observableObject: AnyObject) {
+    typealias ObservableObjectType = ObservableObject
+    typealias StateType = ObservableObject.StateType
+    typealias CallbackType = (ObservableObjectType) -> ()
+    
+    weak var observer: AnyObject?
+    weak var observableObject: ObservableObjectType?
+    private var states = [StateType : CallbackType]()
+    
+    init(observer: AnyObject, observableObject: ObservableObjectType) {
         self.observer = observer
         self.observableObject = observableObject
     }
     
-    func set(handler: @escaping IDPStateChangeHandler, for state: Int) {
-        self.states[state] = handler
+    subscript(state: StateType) -> CallbackType? {
+        get { return self.states[state] }
+        set { self.states[state] = newValue }
     }
     
-    func remove(handler: @escaping IDPStateChangeHandler, for state: Int) {
-        self.states[state] = nil
-    }
-    
-    func handler(for state: Int) -> IDPStateChangeHandler? {
-        return self.states[state] as? IDPStateChangeHandler
-    }
-    
-    subscript(index: Int) -> Any? {
-        get{
-            return self.handler(for: index)
-        }
-        set {
-            self.set(handler: newValue as! IDPStateChangeHandler, for: index)
-        }
-    }
-    
-    func notify(state: Int, object: Any? = nil) {
-        if let handler = self[state] as? IDPStateChangeHandler {
-            handler(self, object)
-        }
+    func notify(of state: State) {
+        self.observableObject.apply(self.states[state])
     }
 }

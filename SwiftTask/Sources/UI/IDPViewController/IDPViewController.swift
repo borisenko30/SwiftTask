@@ -10,7 +10,9 @@ import UIKit
 
 class IDPViewController: UIViewController {
     
-    var observer: IDPObservationController? {
+    typealias ObserverType = IDPObservableObject<IDPContextState>.ControllerType
+    
+    var observer: ObserverType? {
         didSet {
             if observer != oldValue {
                 self.prepare(observer: observer)
@@ -19,7 +21,7 @@ class IDPViewController: UIViewController {
     }
 
     // should be overriden in subclasses
-    func prepare(observer: IDPObservationController?) {
+    func prepare(observer: ObserverType?) {
 
     }
 }

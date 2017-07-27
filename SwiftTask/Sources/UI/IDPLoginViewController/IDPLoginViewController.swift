@@ -37,13 +37,11 @@ class IDPLoginViewController: IDPViewController {
     }
     
     // MARK: IDPViewContorller override
-    override func prepare(observer: IDPObservationController?) {
-        let handler = {(controller: IDPObservationController, userInfo: Any?) -> Void in
+    override func prepare(observer: IDPViewController.ObserverType?) {
+        observer?[IDPContextState.didLoad] = { _ in
             let friendsViewController = IDPFriendsViewController()
             friendsViewController.friends = IDPUsersModel()
             self.navigationController?.pushViewController(friendsViewController, animated: true)
         }
-        
-        observer?.set(handler: handler, for: IDPContextState.didLoad.rawValue)
     }
 }

@@ -31,17 +31,13 @@ class FriendsDetailViewController: IDPViewController {
     // MARK -
     // MARK: IDPViewContorller override
     
-    override func prepare(observer: IDPObservationController?) {
-        let willLoadHandler = {(controller: IDPObservationController, userInfo: Any?) -> Void in
-            self.mainView?.isLoading = true
-        }
-        
-        observer?.set(handler: willLoadHandler, for: IDPContextState.willLoad.rawValue)
-        
-        let didLoadHandler = {(controller: IDPObservationController, userInfo: Any?) -> Void in
+    override func prepare(observer: IDPViewController.ObserverType?) {
+        observer?[IDPContextState.willLoad] = { _ in
             self.mainView?.isLoading = false
         }
         
-        observer?.set(handler: didLoadHandler, for: IDPContextState.didLoad.rawValue)
+        observer?[IDPContextState.didLoad] = { _ in
+            self.mainView?.isLoading = false
+        }
     }
 }

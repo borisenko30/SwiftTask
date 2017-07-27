@@ -15,7 +15,11 @@ enum IDPModelState: Int {
             willLoad
 }
 
-class IDPModel: IDPObservableObject {
+class IDPModel: IDPObservableObject<IDPModelState> {
+    init() {
+        super.init(with: IDPModelState.willLoad)
+    }
+    
     func load() {
         self.performLoading()
     }

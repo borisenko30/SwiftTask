@@ -34,7 +34,7 @@ class IDPFriendsViewController: IDPViewController, UITableViewDataSource, UITabl
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.reusableCell(cellClass: IDPUserCell.self, for: indexPath) { (result) in
+        let cell = tableView.reusableCell(IDPUserCell.self, for: indexPath) { (result) in
             result.user = self.friends?[indexPath.row]
         }
         
@@ -56,19 +56,15 @@ class IDPFriendsViewController: IDPViewController, UITableViewDataSource, UITabl
     // MARK -
     // MARK: IDPViewContorller override
     
-    override func prepare(observer: IDPObservationController?) {
-        let willLoadHandler = {(controller: IDPObservationController, userInfo: Any?) -> Void in
+    override func prepare(observer: IDPViewController.ObserverType?) {
+        observer?[IDPContextState.willLoad] = { _ in
             self.mainView?.isLoading = true
         }
         
-        observer?.set(handler: willLoadHandler, for: IDPContextState.willLoad.rawValue)
-        
-        let didLoadHandler = {(controller: IDPObservationController, userInfo: Any?) -> Void in
+        observer?[IDPContextState.didLoad] = { _ in
             self.mainView?.isLoading = false
             self.tableView?.reloadData()
         }
-        
-        observer?.set(handler: didLoadHandler, for: IDPContextState.didLoad.rawValue)
     }
     
     // MARK -

@@ -39,14 +39,15 @@ class IDPImageModel: IDPModel {
     
     override func performLoading() {
         IDPGCD.dispatchAsyncInBackground {
-            self.state = IDPModelState.willLoad.rawValue
+            //self.state = IDPModelState.willLoad
             self.load { (image, error) in
                 if error != nil {
                     print(error!)
                 } else {
                     IDPGCD.dispatchOnMainQueue {
                         self.image = image
-                        self.set(state: IDPModelState.didLoad.rawValue, for: self)
+                        self.state = IDPModelState.didLoad
+                        //self.set(state: IDPModelState.didLoad.rawValue, for: self)
                     }
                 }
             }

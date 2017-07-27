@@ -8,68 +8,46 @@
 
 import UIKit
 
-typealias IDPControllerNotificationBlock = (IDPObservationController?) -> Void
-
-class IDPObservableObject: NSObject {
-    var observationControllers: NSHashTable<IDPObservationController> = NSHashTable.weakObjects()
+class IDPObservableObject<State: Hashable>: NSObject {
     
-    // setters for state
-    var state: Int = 0 {
+    // MARK: Subtypes
+    
+    typealias StateType = State
+    typealias ControllerType = IDPObservationController<IDPObservableObject<State>, State>
+    
+    // MARK: Private properties
+    
+    private var observationControllers = NSHashTable<ControllerType>.weakObjects()
+    
+    var state: StateType {
         didSet{
             IDPGCD.synchronize(self) {
                 if self.state != oldValue {
-                    self.notify(state: self.state)
+                    self.notify(of: self.state)
                 }
             }
         }
     }
     
-    func set(state: Int, for object: Any?) {
-        IDPGCD.synchronize(self) {
-            if self.state != state {
-                self.state = state
-                self.notify(state: state, object: object)
-            }
-        }
+    init(with state: StateType) {
+        self.state = state
+        
+        super.init()
     }
     
-    // add-remove controller methods
-    func observationController(observer: Any?) -> IDPObservationController {
-        let controller = IDPObservationController(observer: observer as AnyObject, observableObject: self)
+    // MARK: Public
+    
+    func observationController(observer: AnyObject) -> ControllerType {
+        let controller = IDPObservationController(observer: observer, observableObject: self)
         self.observationControllers.add(controller)
         
         return controller
     }
-    
-    func invalidate(controller: IDPObservationController) {
-        self.observationControllers.remove(controller)
-    }
-    
-    func invalidateControllers() {
-        for controller in self.observationControllers.objectEnumerator() {
-            self.observationControllers.remove(controller as? IDPObservationController)
+
+    func notify(of state: StateType) {
+        self.observationControllers.allObjects.forEach {
+            $0.notify(of: state)
         }
     }
-    
-    // notify methods
-    func notify(state: Int, object: Any? = nil) {
-        let handler: IDPControllerNotificationBlock = {
-            (controller: IDPObservationController?) in
-            controller?.notify(state: state, object: object)
-        }
-        
-        self.notify(state: state, handler: handler)
-    }
-    
-    func notify(state: Int, handler: IDPControllerNotificationBlock?) {
-        if handler == nil {
-            return
-        }
-        
-        IDPGCD.synchronize(self) {
-            for controller in self.observationControllers.objectEnumerator() {
-                handler?(controller as? IDPObservationController)
-            }
-        }
-    }
+
 }

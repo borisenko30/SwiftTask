@@ -23,14 +23,13 @@ class IDPImageView: IDPLoadingViewContainer {
         didSet {
             if imageModel != oldValue {
                 self.contentImageView?.image = nil
-                oldValue?.invalidateControllers()
                 self.observer = imageModel?.observationController(observer: self)
                 imageModel?.load()
             }
         }
     }
     
-    var observer: IDPObservationController? {
+    var observer: IDPObservableObject<IDPModelState>.ControllerType? {
         didSet {
             if observer != oldValue {
                 self.prepare(observer: observer)
@@ -58,27 +57,19 @@ class IDPImageView: IDPLoadingViewContainer {
         imageView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         self.contentImageView = imageView
     }
-    
-    
-    func prepare(observer: IDPObservationController?) {
-        let willLoadHandler = {(controller: IDPObservationController, userInfo: Any?) -> Void in
+
+    func prepare(observer: IDPObservableObject<IDPModelState>.ControllerType?) {
+        observer?[IDPModelState.willLoad] = { _ in
             self.isLoading = true
         }
         
-        observer?.set(handler: willLoadHandler, for: IDPModelState.willLoad.rawValue)
-        
-        let didFailHandler = {(controller: IDPObservationController, userInfo: Any?) -> Void in
+        observer?[IDPModelState.didFailLoading] = { _ in
             self.imageModel?.load()
         }
         
-        observer?.set(handler: didFailHandler, for: IDPModelState.didFailLoading.rawValue)
-        
-        let didLoadHandler = {(controller: IDPObservationController, userInfo: Any?) -> Void in
+        observer?[IDPModelState.didLoad] = { _ in
             self.isLoading = false
-            self.contentImageView?.image = (userInfo as? IDPImageModel)?.image
-            print("")
+            self.contentImageView?.image = self.imageModel?.image
         }
-        
-        observer?.set(handler: didLoadHandler, for: IDPModelState.didLoad.rawValue)
     }
 }

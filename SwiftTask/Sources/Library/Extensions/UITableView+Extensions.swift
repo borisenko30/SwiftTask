@@ -9,27 +9,26 @@
 import UIKit
 
 extension UITableView {
-    func dequeueReusableCell<Result: UITableViewCell>(
-        cellClass: Result.Type,
-        for indexPath: IndexPath
-    )
-        -> UITableViewCell
-    {
-        let identifier = String(describing: cellClass)
-        self.register(UINib.nib(cellClass), forCellReuseIdentifier: identifier)
-        
-        return self.dequeueReusableCell(withIdentifier: identifier, for: indexPath)
-    }
     
-    func reusableCell<Result: UITableViewCell>(
-        cellClass: Result.Type,
+    @nonobjc static var registeredNib = Dictionary<String, UINib>()
+    
+    func reusableCell<Result: UITableViewCell> (
+        _ type: Result.Type,
         for indexPath: IndexPath,
         configure: (Result) -> ()
     )
         -> UITableViewCell
     {
-        let cell = self.dequeueReusableCell(cellClass: cellClass, for: indexPath)
+        let identifier = String(describing: type)
+        let nib: UINib
         
+        if (UITableView.registeredNib[identifier] == nil) {
+            nib = UINib.nib(type)
+            self.register(nib, forCellReuseIdentifier: identifier)
+            UITableView.registeredNib[identifier] = nib
+        }
+        
+        let cell = self.dequeueReusableCell(withIdentifier: identifier, for: indexPath)
         cast(cell).do(configure)
         
         return cell
