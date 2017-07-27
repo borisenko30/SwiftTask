@@ -16,7 +16,7 @@ class  ActivityIndicatorLoadingView: UIView, AlphaLoadingView {
         let loadingView: ActivityIndicatorLoadingView? = UINib.object(className: ActivityIndicatorLoadingView.self)
         
         loadingView?.frame = superView.bounds
-        superView.addSubview(loadingView!)
+        loadingView.do(superView.addSubview)
         loadingView?.setNeedsDisplay()
         loadingView?.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         

@@ -14,8 +14,7 @@ class IDPFriendListContext: FacebookContext {
     private var model: IDPUsersModel?
     
     override func execute(object: AnyObject) {
-        self.model = (object as! IDPFriendsViewController).friends
-        //self.state = IDPContextState.willLoad
+        self.model = (object as? IDPFriendsViewController)?.friends
         super.execute(object: object)
     }
     

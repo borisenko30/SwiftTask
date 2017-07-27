@@ -16,7 +16,7 @@ class FriendsDetailViewController: IDPViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.initMainView()
-        let friendInfoContext = FriendInfoContext(with: (user?.id)!,
+        let friendInfoContext = FriendInfoContext(with: user?.id ?? "",
                                                   ["fields": "id,name,gender,picture.type(large),birthday,about,email"])
         self.observer = friendInfoContext.observationController(observer: self)
         friendInfoContext.execute(object: self)

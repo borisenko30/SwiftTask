@@ -9,10 +9,10 @@
 import UIKit
 
 extension URL {
-    func fileSystemURL() -> URL? {
+    func fileSystemURL() -> URL {
         let fileName = self.relativePath.addingPercentEncoding(withAllowedCharacters: .alphanumerics)
         
-        let path = String(format: "%@/%@%@", FileManager.applicationURL.path, self.host ?? "", fileName!)
+        let path = String(format: "%@/%@%@", FileManager.applicationURL.path, self.host ?? "", fileName ?? "")
         
         return URL(fileURLWithPath: path)
     }

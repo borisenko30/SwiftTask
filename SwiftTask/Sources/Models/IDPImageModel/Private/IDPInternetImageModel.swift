@@ -36,29 +36,25 @@ class IDPInternetImageModel: IDPFileSystemImageModel {
         let configuration = URLSessionConfiguration.ephemeral
         let session = URLSession(configuration: configuration)
         
-        self.sessionTask = session.downloadTask(with: self.url!,
-                                   completionHandler: {(location: URL?, response: URLResponse?, error: Error?) in
-                                        let fileManager = FileManager.default
-                                        do {
-                                            try fileManager.moveItem(at: location! , to: self.localURL!)
-                                        } catch {
-                                            print("Error occured while trying to move file!")
+        self.url.do {
+            self.sessionTask = session.downloadTask(
+                                    with: $0,
+                                    completionHandler: {(location, response, error) in
+                                        self.url.do{
+                                            try? FileManager.default.moveItem(at: $0, to: self.localURL)
+                                            let image = UIImage(contentsOfFile: self.localURL.path)
+                                            completionBlock(image, error)
                                         }
-                                    
-                                        let image = UIImage(contentsOfFile: (self.localURL?.path)!)
-                                        completionBlock(image, error)
-                                    })
+                                    }
+            )
+        }
     }
     
     private func isCached() -> Bool? {
-        return cast(self.localURL.map(FileManager.fileExists(at:)))
+        return FileManager.fileExists(at: self.localURL)
     }
     
     private func removeCachedFile() {
-        do {
-            try self.localURL.map(FileManager.default.removeItem(at:))
-        } catch {
-            print("Error occured while removing cached file...")
-        }
+        try? FileManager.default.removeItem(at: self.localURL)
     }
 }

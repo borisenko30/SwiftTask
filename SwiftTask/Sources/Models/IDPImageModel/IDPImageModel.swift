@@ -13,13 +13,11 @@ typealias IDPCompletionBlock = (_ image: UIImage?, _ error: Error?) -> Void
 class IDPImageModel: IDPModel {
     var image: UIImage?
     var url: URL?
-    var localURL: URL? {
-        return self.url?.fileSystemURL()
-    }
+    var localURL: URL
     
     let cache: IDPCache = IDPCache.sharedCache
     
-    class func model(with url:URL) -> IDPImageModel {
+    class func model(with url: URL) -> IDPImageModel {
         let cache: IDPCache = IDPCache.sharedCache
         
         if let model = cache.model(for: url) {
@@ -33,21 +31,20 @@ class IDPImageModel: IDPModel {
     }
     
     init(url: URL) {
+        self.localURL = url.fileSystemURL()
         super.init()
         self.url = url
     }
     
     override func performLoading() {
         IDPGCD.dispatchAsyncInBackground {
-            //self.state = IDPModelState.willLoad
             self.load { (image, error) in
                 if error != nil {
-                    print(error!)
+                    print(error ?? "unknown error occured while loading image model")
                 } else {
                     IDPGCD.dispatchOnMainQueue {
                         self.image = image
                         self.state = IDPModelState.didLoad
-                        //self.set(state: IDPModelState.didLoad.rawValue, for: self)
                     }
                 }
             }

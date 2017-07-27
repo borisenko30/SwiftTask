@@ -13,6 +13,11 @@ class FacebookContext: IDPBaseContext {
     
     private var graphPath: String
     private var parameters: [String : Any]
+    private var connection: FBSDKGraphRequestConnection?
+    
+    deinit {
+        self.cancel()
+    }
     
     init(with graphPath: String, _ parameters: Dictionary<String, Any>) {
         self.graphPath = graphPath
@@ -24,6 +29,10 @@ class FacebookContext: IDPBaseContext {
         requestInfo()
     }
     
+    override func cancel() {
+        connection?.cancel()
+    }
+    
     func requestInfo() {
         let fbRequestFriends: FBSDKGraphRequest =
             FBSDKGraphRequest(
@@ -31,7 +40,7 @@ class FacebookContext: IDPBaseContext {
                 parameters: self.parameters
             )
         
-        fbRequestFriends.start { (connection, result, error) in
+        connection = fbRequestFriends.start { (connection, result, error) in
             if error == nil && result != nil {
                 self.processData(result)
             } else {

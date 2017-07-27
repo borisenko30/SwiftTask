@@ -14,7 +14,7 @@ class IDPImageView: IDPLoadingViewContainer {
         didSet {
             if contentImageView != oldValue  {
                 oldValue?.removeFromSuperview()
-                self.addSubview(contentImageView!)
+                contentImageView.do(self.addSubview)
             }
         }
     }

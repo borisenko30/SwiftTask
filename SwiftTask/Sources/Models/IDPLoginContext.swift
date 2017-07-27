@@ -13,7 +13,6 @@ import FacebookCore
 class IDPLoginContext: IDPBaseContext {
     override func execute(object: AnyObject) {
         let loginManager = LoginManager()
-        //self.state = IDPContextState.willLoad
         
         loginManager.logIn([ .publicProfile ], viewController: object as? UIViewController) { loginResult in
             switch loginResult {
