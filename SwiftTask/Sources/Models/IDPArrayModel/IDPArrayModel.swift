@@ -14,12 +14,18 @@ class IDPArrayModel<T:Equatable>: IDPModel {
          return self.objects.count
     }
     
+    private let lock = NSLock()
+    
     func add(object: T) {
-        objects.append(object)
+        lock.synchronized {
+            objects.append(object)
+        }
     }
     
     func remove(object: T) {
-        objects = objects.filter { $0 != object }
+        lock.synchronized {
+            objects = objects.filter { $0 != object }
+        }
     }
     
     func add(objects: [T]) {
@@ -35,11 +41,15 @@ class IDPArrayModel<T:Equatable>: IDPModel {
     }
     
     func index(of object: T) -> Int? {
-        return self.objects.index(of: object)
+        return lock.synchronized {
+             self.objects.index(of: object)
+        }
     }
     
     subscript(index: Int) -> T {
-        return self.objects[index]
+        return lock.synchronized {
+            self.objects[index]
+        }
     }
     
     override func performLoading() {

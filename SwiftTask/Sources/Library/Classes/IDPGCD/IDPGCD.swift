@@ -18,8 +18,4 @@ class IDPGCD {
     class func dispatchAsyncInBackground(block: @escaping IDPBlock) {
         DispatchQueue.global(qos: .default).async(execute: block)
     }
-    
-    class func synchronize(_ object: AnyObject, block: @escaping IDPBlock) {
-        DispatchQueue(label: object.hash.description).sync(execute: block)
-    }
 }

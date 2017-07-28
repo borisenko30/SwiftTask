@@ -18,10 +18,11 @@ class IDPObservableObject<State: Hashable>: NSObject {
     // MARK: Private properties
     
     private var observationControllers = NSHashTable<ControllerType>.weakObjects()
+    private let lock = NSLock()
     
     var state: StateType {
         didSet{
-            IDPGCD.synchronize(self) {
+            lock.synchronized {
                 if self.state != oldValue {
                     self.notify(of: self.state)
                 }

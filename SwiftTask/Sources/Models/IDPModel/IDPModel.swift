@@ -16,12 +16,27 @@ enum IDPModelState: Int {
 }
 
 class IDPModel: IDPObservableObject<IDPModelState> {
+    
+    private let lock = NSLock()
+    
     init() {
         super.init(with: IDPModelState.willLoad)
     }
     
     func load() {
-        self.performLoading()
+        lock.synchronized{
+            let state = self.state
+            if state == IDPModelState.willLoad || state == IDPModelState.didLoad {
+                self.notify(of: state)
+                return
+            }
+            
+            self.state = IDPModelState.willLoad
+        }
+        
+        IDPGCD.dispatchAsyncInBackground {
+            self.performLoading()
+        }
     }
     
     // should be overriden in subclasses

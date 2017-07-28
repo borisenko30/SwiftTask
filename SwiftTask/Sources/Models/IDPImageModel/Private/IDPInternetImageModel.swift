@@ -40,7 +40,7 @@ class IDPInternetImageModel: IDPFileSystemImageModel {
             self.sessionTask = session.downloadTask(
                                     with: $0,
                                     completionHandler: {(location, response, error) in
-                                        self.url.do{
+                                        location.do{
                                             try? FileManager.default.moveItem(at: $0, to: self.localURL)
                                             let image = UIImage(contentsOfFile: self.localURL.path)
                                             completionBlock(image, error)
