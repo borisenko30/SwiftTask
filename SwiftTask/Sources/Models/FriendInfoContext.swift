@@ -34,7 +34,7 @@ class FriendInfoContext: FacebookContext {
         user?.email = email
         user?.imageURL = URL(string: pictureURL)
         
-        self.controller?.mainView?.user = user
+        self.controller?.rootView?.user = user
         
         self.state = IDPContextState.didLoad
     }

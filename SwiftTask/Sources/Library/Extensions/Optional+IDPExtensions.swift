@@ -22,7 +22,7 @@ extension Optional {
     func apply<Value, Result>(_ value: Value?) -> Result?
         where Wrapped == (Value) -> Result
     {
-        return self.apply(value)
+        return value.apply(self)
     }
     
     

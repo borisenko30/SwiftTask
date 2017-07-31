@@ -8,13 +8,12 @@
 
 import UIKit
 
-class IDPFriendsViewController: IDPViewController, UITableViewDataSource, UITableViewDelegate {
+class IDPFriendsViewController: IDPViewController, UITableViewDataSource, UITableViewDelegate, RootViewGettable {
     @IBOutlet var tableView: UITableView?
     
-    @IBOutlet var mainView: IDPFriendsView?
+    typealias RootViewType = IDPFriendsView
     
     var friends: IDPUsersModel?
-    
     var friendListContext: IDPFriendListContext?
 
     override func viewDidLoad() {
@@ -23,7 +22,6 @@ class IDPFriendsViewController: IDPViewController, UITableViewDataSource, UITabl
                                                  ["fields": "id,name,picture"])
         self.observer = friendListContext?.observationController(observer: self)
         friendListContext?.execute(object: self)
-        self.initMainView()
     }
     
     // MARK -
@@ -58,23 +56,17 @@ class IDPFriendsViewController: IDPViewController, UITableViewDataSource, UITabl
     
     override func prepare(observer: IDPViewController.ObserverType?) {
         observer?[IDPContextState.willLoad] = { _ in
-            self.mainView?.isLoading = true
+            self.rootView?.isLoading = true
         }
         
         observer?[IDPContextState.didLoad] = { _ in
-            self.mainView?.isLoading = false
+            self.rootView?.isLoading = false
             self.tableView?.reloadData()
         }
     }
     
     // MARK -
     // MARK Private
-    
-    private func initMainView() -> () {
-        if self.mainView == nil {
-            self.mainView = self.view as? IDPFriendsView
-        }
-    }
     
     private func showFriendInfo(at indexPath: IndexPath) -> () {
         let controller = FriendsDetailViewController.viewController()

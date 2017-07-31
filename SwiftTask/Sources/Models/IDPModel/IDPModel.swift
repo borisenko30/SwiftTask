@@ -24,7 +24,7 @@ class IDPModel: IDPObservableObject<IDPModelState> {
     }
     
     func load() {
-        lock.synchronized{
+        lock.synchronized {
             let state = self.state
             if state == IDPModelState.willLoad || state == IDPModelState.didLoad {
                 self.notify(of: state)

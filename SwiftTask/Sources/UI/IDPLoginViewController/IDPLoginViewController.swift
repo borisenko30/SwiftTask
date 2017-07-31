@@ -8,10 +8,9 @@
 
 import UIKit
 import FacebookLogin
-//import FacebookCore
 
-class IDPLoginViewController: IDPViewController {
-    @IBOutlet var loginView: IDPLoginView?
+class IDPLoginViewController: IDPViewController, RootViewGettable {
+    typealias RootViewType = IDPLoginView
     
     var loginContext: IDPLoginContext?
 
@@ -19,23 +18,16 @@ class IDPLoginViewController: IDPViewController {
         super.viewDidLoad()
         loginContext = IDPLoginContext()
         self.observer = loginContext?.observationController(observer: self)
-        self.initMainView()
     }
     
     @IBAction func onLoginButtonTouch() {
         self.login()
     }
     
-    private func initMainView() -> () {
-        if self.loginView == nil {
-            self.loginView = self.view as? IDPLoginView
-        }
-    }
-    
     private func login() {
         loginContext?.execute(object: self)
     }
-    
+
     // MARK: IDPViewContorller override
     override func prepare(observer: IDPViewController.ObserverType?) {
         observer?[IDPContextState.didLoad] = { _ in

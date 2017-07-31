@@ -9,7 +9,6 @@
 import UIKit
 
 class IDPViewController: UIViewController {
-    
     typealias ObserverType = IDPObservableObject<IDPContextState>.ControllerType
     
     var observer: ObserverType? {

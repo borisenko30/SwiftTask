@@ -15,6 +15,7 @@
 		561010B01F17AB83006C3273 /* IDPUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561010AF1F17AB83006C3273 /* IDPUser.swift */; };
 		561010B41F17B14C006C3273 /* UINib+IDPExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561010B31F17B14C006C3273 /* UINib+IDPExtensions.swift */; };
 		561010B61F17B234006C3273 /* Array+IDPExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561010B51F17B234006C3273 /* Array+IDPExtensions.swift */; };
+		56235E841F2F161A00595B78 /* RootViewGettable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56235E831F2F161A00595B78 /* RootViewGettable.swift */; };
 		563EF2941F1F3FA600241810 /* IDPFileSystemImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563EF2931F1F3FA600241810 /* IDPFileSystemImageModel.swift */; };
 		563EF2961F1F3FBE00241810 /* IDPInternetImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563EF2951F1F3FBE00241810 /* IDPInternetImageModel.swift */; };
 		563FE3F71F1DF3C8000331B9 /* IDPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563FE3F61F1DF3C8000331B9 /* IDPViewController.swift */; };
@@ -67,6 +68,7 @@
 		561010AF1F17AB83006C3273 /* IDPUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IDPUser.swift; sourceTree = "<group>"; };
 		561010B31F17B14C006C3273 /* UINib+IDPExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UINib+IDPExtensions.swift"; sourceTree = "<group>"; };
 		561010B51F17B234006C3273 /* Array+IDPExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+IDPExtensions.swift"; sourceTree = "<group>"; };
+		56235E831F2F161A00595B78 /* RootViewGettable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewGettable.swift; sourceTree = "<group>"; };
 		563EF2931F1F3FA600241810 /* IDPFileSystemImageModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IDPFileSystemImageModel.swift; sourceTree = "<group>"; };
 		563EF2951F1F3FBE00241810 /* IDPInternetImageModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IDPInternetImageModel.swift; sourceTree = "<group>"; };
 		563FE3F61F1DF3C8000331B9 /* IDPViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IDPViewController.swift; sourceTree = "<group>"; };
@@ -404,6 +406,7 @@
 			isa = PBXGroup;
 			children = (
 				569022A21F1C97EC00FAB3BC /* IDPLoading.swift */,
+				56235E831F2F161A00595B78 /* RootViewGettable.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -580,6 +583,7 @@
 				563FE40A1F1E00A0000331B9 /* FileManager+IDPExtensions.swift in Sources */,
 				5642CE1C1F18D521002D9F5C /* Optional+IDPExtensions.swift in Sources */,
 				561010B01F17AB83006C3273 /* IDPUser.swift in Sources */,
+				56235E841F2F161A00595B78 /* RootViewGettable.swift in Sources */,
 				5661B7EC1F2635CC0007C7B5 /* FriendInfoContext.swift in Sources */,
 				563EF2941F1F3FA600241810 /* IDPFileSystemImageModel.swift in Sources */,
 				569022B41F1CAFEB00FAB3BC /* IDPFriendsView.swift in Sources */,

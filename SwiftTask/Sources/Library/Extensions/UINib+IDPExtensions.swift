@@ -26,7 +26,7 @@ extension UINib {
     }
     
     static func object<Object>(className: Object.Type, owner: Any?, options: [AnyHashable : Any]?) -> Object? {
-        let nib: UINib = self.nib(className: className, bundle:nil)
+        let nib: UINib = self.nib(className)
     
         return nib.object(className: className, owner:owner, options:options)
     }
