@@ -10,6 +10,16 @@ import UIKit
 import FBSDKCoreKit
 
 class FacebookContext: IDPBaseContext {
+    struct User {
+        static let id = "id"
+        static let name = "name"
+        static let data = "data"
+        static let about = "about"
+        static let email = "email"
+        static let picture = "picture"
+        static let birthday = "birthday"
+        static let url = "url"
+    }
     
     private var graphPath: String
     private var parameters: [String : Any]
@@ -26,6 +36,7 @@ class FacebookContext: IDPBaseContext {
     }
     
     override func execute(object: AnyObject) {
+        self.state = IDPContextState.willLoad
         requestInfo()
     }
     
@@ -39,10 +50,11 @@ class FacebookContext: IDPBaseContext {
                 graphPath: self.graphPath,
                 parameters: self.parameters
             )
-        
+
         connection = fbRequestFriends.start { (connection, result, error) in
             if error == nil && result != nil {
                 self.processData(result)
+                self.state = IDPContextState.didLoad
             } else {
                 print("Error \(String(describing: error))")
             }

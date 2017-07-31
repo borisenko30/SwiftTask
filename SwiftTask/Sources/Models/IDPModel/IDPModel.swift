@@ -20,7 +20,7 @@ class IDPModel: IDPObservableObject<IDPModelState> {
     private let lock = NSLock()
     
     init() {
-        super.init(with: IDPModelState.willLoad)
+        super.init(with: IDPModelState.didUnload)
     }
     
     func load() {
@@ -28,10 +28,9 @@ class IDPModel: IDPObservableObject<IDPModelState> {
             let state = self.state
             if state == IDPModelState.willLoad || state == IDPModelState.didLoad {
                 self.notify(of: state)
-                return
+            } else {
+                self.state = IDPModelState.willLoad
             }
-            
-            self.state = IDPModelState.willLoad
         }
         
         IDPGCD.dispatchAsyncInBackground {

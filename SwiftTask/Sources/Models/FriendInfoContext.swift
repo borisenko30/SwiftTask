@@ -19,23 +19,26 @@ class FriendInfoContext: FacebookContext {
     override func processData(_ data: Any?) {
         let friend: Dictionary<String, Any>? = cast(data)
         
-        let birthday: String? = cast(friend?["birthday"])
-        let about: String? = cast(friend?["about"])
-        let email: String? = cast(friend?["email"])
-        let pictureURL = ((friend?["picture"]
-            as? Dictionary<String, Any>)?["data"]
-            as? Dictionary<String, Any>)?["url"]
+        let pictureURL = ((friend?[User.picture]
+            as? Dictionary<String, Any>)?[User.data]
+            as? Dictionary<String, Any>)?[User.url]
             as? String ?? ""
 
         let user = self.controller?.user
         
-        user?.birthday = birthday
-        user?.about = about
-        user?.email = email
+//        func set(_ property: inout String?, key: String) {
+//            property = cast(friend?[key])
+//        }
+        
+//        set(&user?.birthday, key: User.birthday)
+//        set(&user?.about, key: User.about)
+//        set(&user?.email, key: User.email)
+
+        user?.birthday = cast(friend?[User.birthday])
+        user?.about = cast(friend?[User.about])
+        user?.email = cast(friend?[User.email])
         user?.imageURL = URL(string: pictureURL)
         
         self.controller?.rootView?.user = user
-        
-        self.state = IDPContextState.didLoad
     }
 }

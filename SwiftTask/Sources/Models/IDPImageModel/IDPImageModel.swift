@@ -24,13 +24,13 @@ class IDPImageModel: IDPModel {
             return model
         }
         
-        let model = url.isFileURL ? IDPFileSystemImageModel(url: url) : IDPInternetImageModel(url: url)
+        let model = url.isFileURL ? IDPFileSystemImageModel(with: url) : IDPInternetImageModel(with: url)
         cache.set(model: model, for: url)
         
         return model
     }
     
-    init(url: URL) {
+    init(with url: URL) {
         self.localURL = url.fileSystemURL()
         super.init()
         self.url = url
@@ -38,7 +38,8 @@ class IDPImageModel: IDPModel {
     
     override func performLoading() {
         IDPGCD.dispatchAsyncInBackground {
-            self.load { (image, error) in
+            self.state = IDPModelState.willLoad
+            self.load { image, error in
                 if error != nil {
                     print(error ?? "unknown error occured while loading image model")
                 } else {

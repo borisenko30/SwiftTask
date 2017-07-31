@@ -10,16 +10,7 @@ import UIKit
 import FBSDKCoreKit
 
 class IDPFriendListContext: FacebookContext {
-    
     private var model: IDPUsersModel?
-    
-    struct Property {
-        static let id = "id"
-        static let name = "name"
-        static let data = "data"
-        static let picture = "picture"
-        static let url = "url"
-    }
     
     override func execute(object: AnyObject) {
         self.model = (object as? IDPFriendsViewController)?.friends
@@ -30,15 +21,15 @@ class IDPFriendListContext: FacebookContext {
         let curriedInit = curry(IDPUser.init(id:name:imageURL:))
         
         let dictionary: Dictionary<String, Any>? = cast(data)
-        let friends: Array<NSDictionary>? = cast(dictionary?[Property.data])
+        let friends: Array<NSDictionary>? = cast(dictionary?[User.data])
 
         friends.flatMap {
             $0.flatMap { user -> IDPUser? in
-                let id: String? = cast(user[Property.id])
-                let name: String? = cast(user[Property.name])
-                let pictureURL = ((user[Property.picture]
-                                    as? Dictionary<String, Any>)?[Property.data]
-                                    as? Dictionary<String, Any>)?[Property.url]
+                let id: String? = cast(user[User.id])
+                let name: String? = cast(user[User.name])
+                let pictureURL = ((user[User.picture]
+                                    as? Dictionary<String, Any>)?[User.data]
+                                    as? Dictionary<String, Any>)?[User.url]
                                     as? String ?? ""
                 
                 let url:URL? = URL(string: pictureURL)
@@ -46,7 +37,5 @@ class IDPFriendListContext: FacebookContext {
                 return id.apply(curriedInit).apply(name).apply(url)
             }
         }.do { self.model?.add(objects: $0) }
-        
-        self.state = IDPContextState.didLoad
     }
 }
