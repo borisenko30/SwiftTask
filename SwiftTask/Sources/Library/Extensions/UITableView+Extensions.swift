@@ -8,10 +8,7 @@
 
 import UIKit
 
-extension UITableView {
-    
-    @nonobjc static var registeredNib = Dictionary<String, UINib>()
-    
+extension UITableView {    
     func reusableCell<Result: UITableViewCell> (
         _ type: Result.Type,
         for indexPath: IndexPath,
@@ -19,16 +16,7 @@ extension UITableView {
     )
         -> UITableViewCell
     {
-        let identifier = String(describing: type)
-        let nib: UINib
-        
-        if (UITableView.registeredNib[identifier] == nil) {
-            nib = UINib.nib(type)
-            self.register(nib, forCellReuseIdentifier: identifier)
-            UITableView.registeredNib[identifier] = nib
-        }
-        
-        let cell = self.dequeueReusableCell(withIdentifier: identifier, for: indexPath)
+        let cell = self.dequeueReusableCell(withIdentifier: String(describing: type), for: indexPath)
         cast(cell).do(configure)
         
         return cell

@@ -10,6 +10,6 @@ import UIKit
 
 class IDPFileSystemImageModel: IDPImageModel {
     override func load(_ completionBlock: @escaping IDPCompletionBlock) {
-        completionBlock(UIImage(contentsOfFile: self.localURL.path), nil)
+        completionBlock( LoadingResult.value(UIImage(contentsOfFile: self.localURL.path)!) )
     }
 }

@@ -12,12 +12,15 @@ class IDPFriendsViewController: IDPViewController, UITableViewDataSource, UITabl
     @IBOutlet var tableView: UITableView?
     
     typealias RootViewType = IDPFriendsView
+    typealias CellType = IDPUserCell
     
     var friends: IDPUsersModel?
     var friendListContext: IDPFriendListContext?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView?.register(UINib.nib(CellType.self), forCellReuseIdentifier: String(describing: CellType.self))
+        
         friendListContext = IDPFriendListContext(with: "me/friends",
                                                  ["fields": "id,name,picture"])
         self.observer = friendListContext?.observationController(observer: self)

@@ -8,7 +8,17 @@
 
 import UIKit
 
-typealias IDPCompletionBlock = (_ image: UIImage?, _ error: Error?) -> Void
+enum LoadingError: Error {
+    case didFailLoading
+}
+
+enum Result<Value, Error> {
+    case value(Value)
+    case error(Error)
+}
+
+typealias LoadingResult = Result<UIImage, LoadingError>
+typealias IDPCompletionBlock = (LoadingResult) -> ()
 
 class IDPImageModel: IDPModel {
     var image: UIImage?
@@ -39,10 +49,11 @@ class IDPImageModel: IDPModel {
     override func performLoading() {
         IDPGCD.dispatchAsyncInBackground {
             self.state = IDPModelState.willLoad
-            self.load { image, error in
-                if error != nil {
-                    print(error ?? "unknown error occured while loading image model")
-                } else {
+            self.load {
+                switch $0 {
+                case .error:
+                    self.state = IDPModelState.didFailLoading
+                case .value(let image):
                     IDPGCD.dispatchOnMainQueue {
                         self.image = image
                         self.state = IDPModelState.didLoad

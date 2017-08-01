@@ -42,14 +42,14 @@ class IDPUser: NSObject, NSCoding {
     // MARK: NSCoding methods
     
     required init?(coder aDecoder: NSCoder) {
-        let decode: (String) -> Any? = { cast(aDecoder.decodeObject(forKey: $0)) }
+        let decode: (String) -> String? = { cast(aDecoder.decodeObject(forKey: $0)) }
         
-        self.id = decode(User.id) as? String
-        self.name = decode(User.name) as? String
-        self.birthday = decode(User.birthday) as? String
-        self.about = decode(User.about) as? String
-        self.email = decode(User.email) as? String
-        self.imageURL = decode(User.url) as? URL
+        self.id = decode(User.id)
+        self.name = decode(User.name)
+        self.birthday = decode(User.birthday)
+        self.about = decode(User.about)
+        self.email = decode(User.email)
+        self.imageURL = cast(aDecoder.decodeObject(forKey: User.url))
     }
     
     func encode(with aCoder: NSCoder) {

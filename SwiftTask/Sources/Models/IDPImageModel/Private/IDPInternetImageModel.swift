@@ -19,14 +19,15 @@ class IDPInternetImageModel: IDPFileSystemImageModel {
         let cached: Bool = self.isCached() ?? false
         
         if cached {
-            super.load({ (image: UIImage?, error: Error?) in
-                if (image != nil) {
-                    completionBlock(image, error)
-                } else {
-                    self.removeCachedFile()
-                    self.download(completionBlock)
+            super.load {
+                switch $0 {
+                    case .error:
+                        self.removeCachedFile()
+                        self.download(completionBlock)
+                    case .value:
+                        completionBlock($0)
                 }
-            })
+            }
         } else {
             self.download(completionBlock)
         }
@@ -43,7 +44,7 @@ class IDPInternetImageModel: IDPFileSystemImageModel {
                                         location.do{
                                             try? FileManager.default.moveItem(at: $0, to: self.localURL)
                                             let image = UIImage(contentsOfFile: self.localURL.path)
-                                            completionBlock(image, error)
+                                            completionBlock(LoadingResult.value(image!))
                                         }
                                     }
             )
